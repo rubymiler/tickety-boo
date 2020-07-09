@@ -12,6 +12,8 @@
 #
 class Ticket < ApplicationRecord
   belongs_to :submitter, class_name: 'User'
+  has_many :ticket_topics
+  has_many :topics, through: :ticket_topics
 
   validates :title, :description, :submitter, presence: true
 
