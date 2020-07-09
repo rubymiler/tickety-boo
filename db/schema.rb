@@ -35,7 +35,7 @@ ActiveRecord::Schema.define(version: 2020_07_09_023754) do
 
   create_table "tickets", force: :cascade do |t|
     t.string "title"
-    t.text "body"
+    t.text "description"
     t.boolean "public"
     t.integer "submitter_id"
     t.datetime "created_at", precision: 6, null: false
