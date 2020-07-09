@@ -1,7 +1,3 @@
 <h1>Popular Questions</h1>
 
-<ul>
-  <% @tickets.each do |t| %>
-    <li><%= link_to t.title, ticket_path(t) %></li>
-  <% end %>
-</ul>
+<%= render @tickets %>
