@@ -1,3 +1,4 @@
 <li>
   <%= link_to ticket.title, ticket_path(ticket) %>
+  <%= link_to 'Delete', ticket_path(ticket), method: :delete %>
 </li>
