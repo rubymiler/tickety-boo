@@ -4,12 +4,19 @@ end
 
 puts '10 users created!'
 
+30.times do
+  Topic.create(name: Faker::ProgrammingLanguage.name)
+end
+
+puts '30 topics created!'
+
 User.all.each do |user|
   10.times do
     user.submitted_tickets.create(
       title: Faker::Lorem.sentence,
       description: Faker::Lorem.paragraph,
-      public: [true, false].sample
+      public: [true, false].sample,
+      topics: Topic.all.take(2)
     )
   end
 end
