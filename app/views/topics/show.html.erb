@@ -1,0 +1,4 @@
+<h2><%= @topic.name %></h2>
+<% @topic.tickets.each do |t| %>
+  <%= render 'tickets/ticket', ticket: t %>
+<% end %>
