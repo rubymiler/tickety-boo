@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  has_many :submitted_tickets, foreign_key: "submitter_id", class_name: "Ticket"
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
