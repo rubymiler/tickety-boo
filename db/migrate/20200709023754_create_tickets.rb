@@ -4,6 +4,7 @@ class CreateTickets < ActiveRecord::Migration[6.0]
       t.string :title
       t.text :body
       t.boolean :public
+      t.references :submitter, references: :users, foreign_key: { to_table: :users }
 
       t.timestamps
     end
