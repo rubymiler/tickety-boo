@@ -46,6 +46,6 @@ class TicketsController < ApplicationController
   end
 
   def ticket_params
-    params.require(:ticket).permit(:title, :description, topic_ids:[], topics_attributes: %i[name _destroy])
+    params.require(:ticket).permit(:title, :description, topic_ids:[], topics_attributes: %i[name _destroy id])
   end
 end
