@@ -24,17 +24,23 @@ class Ticket < ApplicationRecord
   def topics_attributes=(attributes)
     attributes.values.each do |topic_params|
       next unless topic_params[:name].present?
-        topic = Topic.find_or_create_by(name: topic_params[:name])
-        if (topic_params[:_destroy] != 'false') && topics.include?(topic)
-          topics.destroy(topic)
-        else
-          ticket_topics.build(topic: topic) unless topics.include?(topic)
-        end
-      end 
+
+      destroy_or_build_topic(topic_params)
     end
   end
 
   def self.public
     where(public: true)
+  end
+
+  private
+
+  def destroy_or_build_topic(params)
+    topic = Topic.find_or_create_by(name: params[:name])
+    if (params[:_destroy] != 'false') && topics.include?(topic)
+      topics.destroy(topic)
+    else
+      ticket_topics.build(topic: topic) unless topics.include?(topic)
+    end
   end
 end
