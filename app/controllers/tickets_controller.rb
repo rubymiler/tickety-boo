@@ -9,9 +9,6 @@ class TicketsController < ApplicationController
 
   def new
     @ticket = Ticket.new
-    2.times do
-      @ticket.topics.build
-    end
   end
 
   def create
@@ -48,6 +45,6 @@ class TicketsController < ApplicationController
   end
 
   def ticket_params
-    params.require(:ticket).permit(:title, :description, topic_ids:[], topics_attributes: [:name])
+    params.require(:ticket).permit(:title, :description, topic_ids:[], topics_attributes: %i[name _destroy])
   end
 end

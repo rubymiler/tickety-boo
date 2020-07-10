@@ -22,14 +22,21 @@
     <%= f.text_area :description %>
   </div>
 
-  <div class="field">
-    <%= f.collection_check_boxes :topic_ids, Topic.all, :id, :name %>
-  </div>
+  <h3>Topics</h3>
+  <div data-controller="nested-form">
+    <template data-target="nested-form.template">
+      <%= f.fields_for :topics, @ticket.topics.build, child_index: 'TEMPLATE_RECORD' do |topic| %>
+        <%= render 'topic_fields', form: topic %>
+      <% end %>
+    </template>
 
-  <div class="field">
-    <%= f.fields_for :topics do |topics_fields| %>
-      Topic: <%= topics_fields.text_field :name %>
+    <%= f.fields_for :topics do |topic| %>
+      <%= render 'topic_fields', form: topic %>
     <% end %>
+
+    <div data-target="nested-form.add_item">
+      <%= link_to "Add Topic", "#", data: { action: "nested-form#add_association" } %>
+    </div>
   </div>
 
   <div class="action">

@@ -14,7 +14,7 @@ class Ticket < ApplicationRecord
   belongs_to :submitter, class_name: 'User'
   has_many :ticket_topics
   has_many :topics, through: :ticket_topics
-  accepts_nested_attributes_for :topics
+  accepts_nested_attributes_for :topics, allow_destroy: true, reject_if: proc { |attr| attr[:name].blank? }
 
   validates :title, :description, :submitter, presence: true
 
