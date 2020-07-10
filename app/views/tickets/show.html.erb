@@ -5,6 +5,11 @@
 <p>
   <%= @ticket.description %>
 </p>
+<p>
+  <% @ticket.topics.each do |topic| %>
+    <%= link_to topic.name, topic_path(topic) %>
+  <% end %>
+</p>
 
 <%= link_to 'Back', tickets_path %> <br>
 <%= link_to 'Edit', edit_ticket_path(@ticket) %>

@@ -12,9 +12,28 @@
   </div>
 <% end %>
 
-  <%= f.label :title %> <br>
-  <%= f.text_field :title %> <br>
-  <%= f.label :description %> <br>
-  <%= f.text_area :description %> <br>
-  <%= f.submit %>
+  <div class="field">
+    <%= f.label :title %><br />
+    <%= f.text_field :title, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :description %><br />
+    <%= f.text_area :description %>
+  </div>
+
+  <div class="field">
+    <%= f.collection_check_boxes :topic_ids, Topic.all, :id, :name %>
+  </div>
+
+  <div class="field">
+    <%= f.fields_for :topics do |topics_fields| %>
+      Topic: <%= topics_fields.text_field :name %>
+    <% end %>
+  </div>
+
+  <div class="action">
+    <%= f.submit %>
+  </div>
+
 <% end %>

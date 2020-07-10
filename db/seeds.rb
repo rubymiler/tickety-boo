@@ -16,7 +16,7 @@ User.all.each do |user|
       title: Faker::Lorem.sentence,
       description: Faker::Lorem.paragraph,
       public: [true, false].sample,
-      topics: Topic.all.take(2)
+      topics: Topic.all.sample(2)
     )
   end
 end
