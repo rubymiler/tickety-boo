@@ -12,18 +12,22 @@
 #
 class Ticket < ApplicationRecord
   belongs_to :submitter, class_name: 'User'
-  has_many :ticket_topics
+  has_many :ticket_topics, dependent: :destroy
   has_many :topics, through: :ticket_topics
   accepts_nested_attributes_for :topics, allow_destroy: true, reject_if: proc { |attr| attr[:name].blank? }
 
   validates :title, :description, :submitter, presence: true
 
   def topics_attributes=(attributes)
+    #TODO: ask Jenn about this bug
+    
     attributes.values.each do |topic_params|
-      if topic_params[:name].present?
-        topic = Topic.find_or_create_by(topic_params)
+      topic = Topic.find_or_create_by(name: topic_params[:name])
+      if !!topic_params[:_destroy] && topics.include?(topic)
+        topics.destroy(topic)
+      else
         ticket_topics.build(topic: topic) unless topics.include?(topic)
-      end
+      end 
     end
   end
 

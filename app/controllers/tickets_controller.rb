@@ -1,6 +1,6 @@
 class TicketsController < ApplicationController
   before_action :set_ticket, only: %i[show edit update destroy]
-  
+
   def index
     @tickets = Ticket.all.public
   end
@@ -9,6 +9,7 @@ class TicketsController < ApplicationController
 
   def new
     @ticket = Ticket.new
+    @topics = Topic.all.distinct
   end
 
   def create

@@ -1,6 +1,11 @@
 <div class="nested-fields">
   <%= form.hidden_field :_destroy %>
-  <%= form.text_field :name, placeholder: 'Topic name' %>
+  <%= form.text_field :name, list: "topics_autocomplete", placeholder: 'Topic name' %>
+  <datalist id="topics_autocomplete">
+    <% Topic.all.distinct.each do |topic| %>
+      <option value="<%= topic.name %>"></option>
+    <% end %>
+  </datalist>
   <small>
     <%= link_to "Remove", "#", data: { action: "click->nested-form#remove_association" } %>
   </small>
