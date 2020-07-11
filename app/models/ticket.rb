@@ -21,16 +21,18 @@ class Ticket < ApplicationRecord
 
   validates :title, :description, :submitter, presence: true
 
+  has_one_attached :attachment
+
+  def self.public
+    where(public: true)
+  end
+
   def topics_attributes=(attributes)
     attributes.values.each do |topic_params|
       next unless topic_params[:name].present?
 
       destroy_or_build_topic(topic_params)
     end
-  end
-
-  def self.public
-    where(public: true)
   end
 
   private

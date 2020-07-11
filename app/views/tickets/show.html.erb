@@ -11,5 +11,9 @@
   <% end %>
 </p>
 
+<% if @ticket.attachment.present? %>
+  <%= image_tag @ticket.attachment.variant(resize_to_limit: [150, nil]) %>
+<% end %>
+
 <%= link_to 'Back', tickets_path %> <br>
 <%= link_to 'Edit', edit_ticket_path(@ticket) %>
