@@ -1,3 +1,4 @@
+//COLOR VARIABLES
 $color-black: #000;
 $color-white: #fff;
 $color-brown: #4F3F2C;
@@ -9,3 +10,33 @@ $color-light_pink: #DD8E89;
 $color-blue: #3B94A1;
 $color-red: #E75D4C;
 $color-dark-blue: #1C404C;
+
+//FONT VARIABLES
+$font-primary: 'Roboto', sans-serif;
+$font-display: 'Lobster', cursive;
+
+//GLOBAL
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+  font-size: 62.5%; // 1 rem = 10px
+}
+
+body {
+  font-family: $font-primary;
+  color: $color-brown;
+  font-weight: 400;
+  line-height: 1.45;
+}
+
+.container {
+  display: grid;
+  grid-template-rows: 80vh;
+}
