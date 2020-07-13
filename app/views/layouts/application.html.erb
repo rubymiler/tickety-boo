@@ -12,24 +12,19 @@
     <%= favicon_link_tag asset_path('favicon.ico') %>
   </head>
 
-  <body class="container">
+  <body>
 
-    <% if current_user %>
-    
-      <section class="notification">
-        <p class="notice"><%= notice %></p>
-        <p class="alert"><%= alert %></p>
-      </section>
-      
-      <main>
-        <%= yield %>
-      </main>
+    <%= render 'shared/header' %>
 
-    <% else %>
+    <section class="notification">
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
+    </section>
 
-      <%= yield %>
+    <%= yield %>
 
-    <% end %>
+    <%= render 'shared/footer' %>
 
   </body>
+
 </html>

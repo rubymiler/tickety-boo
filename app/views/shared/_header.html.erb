@@ -1,0 +1,30 @@
+<header>
+  <div class="logo">
+    <%= link_to "Tickety", root_path %>
+  </div>
+
+  <nav>
+    <ul class="nav--main">
+      <span class="links-container">
+      <% if current_user %>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Features</a></li>
+        <li><a href="#">Team</a></li>
+      <% else %>
+        <li><a href="#">Popular Questions</a></li>
+        <li><a href="#">Your Tickets</a></li>
+        <li><a href="#">Submit a Ticket</a></li>
+      <% end %>
+      </span>
+  
+      <span class="actions-container">
+      <% if current_user %>
+        <li><a href="#">Log Out</a></li>
+      <% else %>
+        <li><%= link_to 'Sign Up', new_user_registration_path %></li>
+        <li><%= link_to 'Log In', new_user_session_path %></li>
+      <% end %>
+      </span>
+    </ul>
+  </nav>
+</header>

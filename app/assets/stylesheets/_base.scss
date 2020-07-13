@@ -1,15 +1,14 @@
 //COLOR VARIABLES
-$color-black: #000;
+$color-black: #0D0C22;
+$color-dark-grey: #5B5A6A;
+$color-light-grey: #E6E6E6;
 $color-white: #fff;
-$color-brown: #4F3F2C;
+$color-light-green: #F2F5E5;
 
-$color-light-blue: #B8CDD2;
-$color-light-yellow: #F0DC8C;
-$color-light_pink: #DD8E89;
-
-$color-blue: #3B94A1;
-$color-red: #E75D4C;
-$color-dark-blue: #1C404C;
+$color-blue: #A9C5FB;
+$color-yellow: #F5DF49;
+$color-pink: #EF7B97;
+$color-green: #7FD5C1;
 
 //FONT VARIABLES
 $font-primary: 'Roboto', sans-serif;
@@ -31,12 +30,7 @@ html {
 
 body {
   font-family: $font-primary;
-  color: $color-brown;
+  color: $color-black;
   font-weight: 400;
   line-height: 1.45;
-}
-
-.container {
-  display: grid;
-  grid-template-rows: 80vh;
 }
