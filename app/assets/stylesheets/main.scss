@@ -1,10 +1,5 @@
-@import "./base";
-@import "./features";
-@import "./footer";
-@import "./header";
-@import "./team";
-@import "./typography";
-
-body {
-  color: $color-brown;
-}
+@import "base";
+@import "header";
+@import "home";
+@import "typography";
+@import "signin-signup";

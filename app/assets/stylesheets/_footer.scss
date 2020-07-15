@@ -1,0 +1,31 @@
+//COLOR VARIABLES
+$color-black: #0D0C22;
+$color-dark-grey: #5B5A6A;
+$color-light-grey: #E6E6E6;
+$color-white: #fff;
+$color-pink: #EF7B97;
+
+footer {
+  background-color: $color-light-grey;
+  text-align: center;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+
+  p {
+    font-size: 1.8rem;
+    margin-bottom: 2rem;
+  }
+}
+
+.social {
+  font-size: 3rem;
+
+  a {
+    color: $color-dark-grey;
+    transition: color 300ms;
+  }
+
+  a:hover {
+    color: $color-black;
+  }
+}

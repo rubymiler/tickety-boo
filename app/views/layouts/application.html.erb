@@ -4,11 +4,10 @@
     <title>TicketyBoo</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Source+Sans+Pro:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Roboto:ital,wght@0,400;0,700;0,900;1,400&display=swap" rel="stylesheet">
-    
+    <script src="https://kit.fontawesome.com/962471347a.js" crossorigin="anonymous"></script>
     <%= favicon_link_tag asset_path('favicon.ico') %>
   </head>
 
@@ -22,8 +21,6 @@
     </section>
 
     <%= yield %>
-
-    <%= render 'shared/footer' %>
 
   </body>
 

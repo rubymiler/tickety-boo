@@ -1,17 +1,69 @@
-<main class="pages--home">
-  <section class="hero__picture">
-    hero picture
+<main class="home">
+  <section class="hero">
+    <div class="hero-content">
+      <h1>The hub for quality desk support you really want.</h1>
+      <p>This is a class project built with Ruby on Rails + Sass for Flatiron School's software engineering program. It includes devise + omniauth authentication, three levels of user authorization, a content management system for support tickets and a project management module for tasks among admins. The front-end is fully responsive.</p>
+      <a href="#" class="btn btn-full">Get Started</a>
+    </div>
+    <div class="hero-picture">
+      <%= image_tag('png/girl-browsing.png', alt: 'girl browsing the web') %>
+    </div>
   </section>
-  
-  <section class="hero__content">
-    hero content
-  </section>
-  
+
   <section class="features">
-    features
+    <h2>How it works</h2>
+    <div class="features-body">
+      <figure>
+        <%= image_tag('png/send-ticket.png', alt: 'girl sending support ticket') %>
+        <figcaption>Send us a support ticket</figcaption>
+      </figure>
+      <figure>
+        <%= image_tag('png/resolve-ticket.png', alt: 'brainstorm to resolve tickets') %>
+        <figcaption>We resolve tickets in 24 hours</figcaption>
+      </figure>
+      <figure>
+        <%= image_tag('png/work-fast.png', alt: 'girl checking boxes') %>
+        <figcaption>Enjoy work without obstacles</figcaption>
+      </figure>
+    </div>
   </section>
-  
+
   <section class="team">
-    team
+    <div class="team-pictures">
+      <figure>
+        <%= image_tag('png/crew-1.png', alt: 'team member 1') %>
+      </figure>
+      <figure>
+        <%= image_tag('png/crew-2.png', alt: 'team member 2') %>
+      </figure>
+      <figure>
+        <%= image_tag('png/crew-3.png', alt: 'team member 3') %>
+      </figure>
+      <figure>
+        <%= image_tag('png/crew-4.png', alt: 'team member 4') %>
+      </figure>
+      <figure>
+        <%= image_tag('png/crew-5.png', alt: 'team member 5') %>
+      </figure>
+      <figure>
+        <%= image_tag('png/crew-6.png', alt: 'team member 6') %>
+      </figure>
+    </div>
+    <div class="team-intro">
+      <h2>Meet your crew</h2>
+      <p>Besides the support ticket and FAQ functions, the project also has 6 pre-set admin users who respond to ticket submissions and post FAQs. They also create and manage tasks among themselves.</p>
+      <p>The project supports ActionMailer for notifications, including when tickets receive responses, when tasks are assigned to user and when user completes tasks.</p>
+    </div>
   </section>
 </main>
+
+<footer>
+  <div class="author">
+    <p>Made with <span>&#x1F496;</span> by Shiyun Lu</p>
+  </div>
+  <div class="social">
+    <a href="#" target="_blank"><i class="fab fa-github"></i></a> 
+    <a href="#" target="_blank"><i class="fab fa-youtube"></i></a>
+    <a href="#" target="_blank"><i class="fab fa-medium"></i></i></a>
+  </div>
+</footer>

@@ -1,0 +1,150 @@
+//COLOR VARIABLES
+$color-black: #0D0C22;
+$color-dark-grey: #5B5A6A;
+$color-light-grey: #E6E6E6;
+$color-white: #fff;
+$color-light-green: #F2F5E5;
+
+$color-blue: #A9C5FB;
+$color-yellow: #F5DF49;
+$color-pink: #EF7B97;
+$color-green: #7FD5C1;
+
+//FONT VARIABLES
+$font-primary: 'Roboto', sans-serif;
+$font-display: 'Pacifico', cursive;
+
+// RESPONSIVE BREAKPOINTS
+$hr-breakpoint: 860px;
+
+.hero {
+  width: 100%;
+  max-width: 1366px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column-reverse;
+  padding: 5rem 2rem;
+  @media only screen and (min-width: $hr-breakpoint) {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding-left: 5rem;
+    padding-right: 5rem;
+  }
+
+  &-content {
+    margin-top: 2rem;
+    max-width: 50rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    @media only screen and (min-width: $hr-breakpoint) {
+      align-items: flex-start;
+      text-align: left;
+    }
+    p {
+      margin: 2.5rem 0;
+      font-size: 1.8rem;
+      color: $color-dark-grey;
+    }
+    a {
+      font-size: 1.8rem;
+    }
+  }
+
+  img {
+    width: 90vw;
+    max-width: 50rem;
+  }
+}
+
+h1 {
+  font-size: 4rem;
+  font-weight: 700;
+  line-height: 120%;
+}
+
+h2 {
+  font-size: 5rem;
+  margin-bottom: 3rem;
+}
+
+.features {
+  text-align: center;
+  width: 100%;
+  background-color: $color-light-grey;
+  padding-top: 10rem;
+  padding-bottom: 12rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  @media only screen and (min-width: $hr-breakpoint) {
+    padding-left: 7rem;
+    padding-right: 7rem;
+  }
+}
+
+.features-body {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+  grid-gap: 36px;
+
+  figure {
+    background-color: $color-white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 3rem;
+    border-radius: 5px;
+  }
+
+  figcaption {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-top: 3rem;
+  }
+}
+
+img {
+  max-width: 100%;
+}
+
+.team {
+  padding-top: 12rem;
+  padding-bottom: 12rem;;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  @media only screen and (min-width: $hr-breakpoint) {
+    flex-direction: row;
+    text-align: left;
+    justify-content: center;
+  }
+}
+
+.team-pictures {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(10rem, 15rem));
+  grid-template-rows: repeat(2, 1fr);
+  grid-row-gap: 4rem;
+  @media only screen and (min-width: $hr-breakpoint) {
+    margin-right: 5rem;
+  }
+}
+
+.team-intro {
+  margin-top: 8rem;
+  max-width: 80vw;
+  p {
+    font-size: 1.8rem;
+    color: $color-dark-grey;
+  }
+  @media only screen and (min-width: $hr-breakpoint) {
+    margin-top: 0;
+    max-width: 85ch;
+    margin-left: 5rem;
+  }
+}

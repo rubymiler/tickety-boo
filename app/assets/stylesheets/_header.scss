@@ -1,0 +1,139 @@
+//COLOR VARIABLES
+$color-black: #0D0C22;
+$color-dark-grey: #5B5A6A;
+$color-light-grey: #E6E6E6;
+$color-white: #fff;
+
+$color-blue: #A9C5FB;
+$color-yellow: #F5DF49;
+$color-pink: #EF7B97;
+$color-green: #7FD5C1;
+
+//FONT VARIABLES
+$font-primary: 'Roboto', sans-serif;
+$font-display: 'Pacifico', cursive;
+
+// RESPONSIVE BREAKPOINTS
+$hd-breakpoint: 860px;
+
+.header-wrapper {
+  position: relative;
+  height: 6.5rem;
+}
+
+header {
+  background-color: $color-white;
+  width: 100%;
+  height: 6.5rem;
+  position: fixed;
+  z-index: 999;
+  padding: 1rem 2rem;
+  display: grid;
+  grid-template-columns: 1fr max-content minmax(max-content, 1fr);
+  align-items: center;
+
+  @media only screen and (min-width: $hd-breakpoint) {
+    position: static;
+    height: 8rem;
+    grid-template-columns: 1fr max-content 1fr;
+    padding: 0 4rem;
+  }
+
+  a {
+    color: $color-dark-grey;
+    font-size: 1.8rem;
+    transition: color 300ms;
+
+    &:hover {
+      color: $color-black;
+    }
+  }
+}
+
+.nav-toggle {
+  display: none;
+}
+
+.nav-toggle-label {
+  position: absolute;
+  left: 0;
+  top: 2.25rem;
+  margin-left: 2rem;
+  width: 3.5rem;
+  @media only screen and (min-width: $hd-breakpoint) {
+    display: none;
+  }
+}
+
+.nav-toggle:checked + ul  {
+  display: block;
+}
+
+.logo {
+  grid-column: 2 / 3;
+  @media only screen and (min-width: $hd-breakpoint) {
+    grid-column: 1 / 2;
+  }
+  img {
+    display: block;
+    width: 4.5rem;
+    @media only screen and (min-width: $hd-breakpoint) {
+      display: none;
+    }
+  }
+  span {
+    display: none;
+    @media only screen and (min-width: $hd-breakpoint) {
+      display: inline-block;
+      font-family: $font-display;
+      font-size: 4rem;
+    }
+  }
+  
+}
+
+.links-container {
+  background-color: $color-white;
+  width: 100%;
+  position: absolute;
+  text-align: left;
+  top: 100%;
+  left: 0;
+  display: none;
+  li {
+    margin-bottom: 1.5rem;
+    margin-left: 2rem;
+  }
+  @media only screen and (min-width: $hd-breakpoint) {
+    all: unset;
+    grid-column: 2 / 3;
+    display: flex;
+    li {
+      margin-bottom: 0;
+      list-style: none;
+    }
+  }
+}
+
+.action-container {
+  grid-column: 3 / 4;
+  display: flex;
+  justify-content: flex-end;
+
+  li {
+    margin-left: 2rem;
+  }
+}
+
+.btn-full {
+  background: $color-pink;
+  padding: 1rem 2rem;
+  border-radius: 5px;
+  color: $color-white;
+  transition: background-color 300ms;
+
+  &:hover {
+    background-color: darken($color-pink, 10%);
+    color: $color-white;
+  }
+}

@@ -3,7 +3,6 @@ $color-black: #0D0C22;
 $color-dark-grey: #5B5A6A;
 $color-light-grey: #E6E6E6;
 $color-white: #fff;
-$color-light-green: #F2F5E5;
 
 $color-blue: #A9C5FB;
 $color-yellow: #F5DF49;
@@ -11,8 +10,11 @@ $color-pink: #EF7B97;
 $color-green: #7FD5C1;
 
 //FONT VARIABLES
-$font-primary: 'Roboto', sans-serif;
-$font-display: 'Lobster', cursive;
+$font-primary: 'Source Sans Pro', sans-serif;
+$font-display: 'Pacifico', cursive;
+
+// RESPONSIVE BREAKPOINTS
+$bp-largest: 1100px;
 
 //GLOBAL
 *,
@@ -21,16 +23,32 @@ $font-display: 'Lobster', cursive;
   margin: 0;
   padding: 0;
   box-sizing: inherit;
+  list-style: none;
+  text-decoration: none;
 }
 
 html {
   box-sizing: border-box;
   font-size: 62.5%; // 1 rem = 10px
+  height: 100%;
+
+  @media only screen and (max-width: $bp-largest) {
+    font-size: 50%;
+  }
 }
 
 body {
   font-family: $font-primary;
-  color: $color-black;
   font-weight: 400;
-  line-height: 1.45;
+  line-height: 1.5;
+  color: $color-black;
+  background-color: $color-white;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+}
+
+footer {
+  margin-top: auto;
 }
