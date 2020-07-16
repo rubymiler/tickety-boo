@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_11_230358) do
+ActiveRecord::Schema.define(version: 2020_07_16_031357) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -35,12 +35,27 @@ ActiveRecord::Schema.define(version: 2020_07_11_230358) do
 
   create_table "comments", force: :cascade do |t|
     t.text "body"
-    t.integer "ticket_id", null: false
-    t.integer "user_id", null: false
+    t.integer "commented_ticket_id"
+    t.integer "commenter_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["ticket_id"], name: "index_comments_on_ticket_id"
-    t.index ["user_id"], name: "index_comments_on_user_id"
+    t.index ["commented_ticket_id"], name: "index_comments_on_commented_ticket_id"
+    t.index ["commenter_id"], name: "index_comments_on_commenter_id"
+  end
+
+  create_table "post_topics", force: :cascade do |t|
+    t.integer "topic_id", null: false
+    t.integer "post_id", null: false
+    t.index ["post_id"], name: "index_post_topics_on_post_id"
+    t.index ["topic_id"], name: "index_post_topics_on_topic_id"
+  end
+
+  create_table "posts", force: :cascade do |t|
+    t.string "title"
+    t.text "content"
+    t.integer "vote"
+    t.integer "user_id", null: false
+    t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
   create_table "ticket_topics", force: :cascade do |t|
@@ -55,7 +70,6 @@ ActiveRecord::Schema.define(version: 2020_07_11_230358) do
   create_table "tickets", force: :cascade do |t|
     t.string "title"
     t.text "description"
-    t.boolean "public"
     t.integer "submitter_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -81,13 +95,17 @@ ActiveRecord::Schema.define(version: 2020_07_11_230358) do
     t.string "first_name"
     t.string "last_name"
     t.string "avatar_url"
+    t.integer "role", default: 0
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "comments", "tickets"
-  add_foreign_key "comments", "users"
+  add_foreign_key "comments", "tickets", column: "commented_ticket_id"
+  add_foreign_key "comments", "users", column: "commenter_id"
+  add_foreign_key "post_topics", "posts"
+  add_foreign_key "post_topics", "topics"
+  add_foreign_key "posts", "users"
   add_foreign_key "ticket_topics", "tickets"
   add_foreign_key "ticket_topics", "topics"
   add_foreign_key "tickets", "users", column: "submitter_id"

@@ -15,12 +15,19 @@
 #  first_name             :string
 #  last_name              :string
 #  avatar_url             :string
+#  role                   :integer          default("member")
 #
 class User < ApplicationRecord
+  enum role: { member: 0, agent: 1, manager: 2 }
+
+  validates :first_name, :last_name, presence: true
+
   has_many :submitted_tickets, foreign_key: 'submitter_id', class_name: 'Ticket'
 
-  has_many :comments
-  has_many :commented_tickets, through: :comments, foreign_key: 'commenter_id', class_name: 'Ticket'
+  has_many :comments, foreign_key: :commenter_id
+  has_many :commented_tickets, through: :comments
+
+  has_many :posts
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :omniauthable, omniauth_providers: [:google_oauth2]
@@ -44,10 +51,6 @@ class User < ApplicationRecord
         user.email = data['email'] if user.email.blank?
       end
     end
-  end
-
-  def name
-    "#{first_name} #{last_name}"
   end
 
   def initials

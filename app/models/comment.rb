@@ -10,6 +10,8 @@
 #  updated_at :datetime         not null
 #
 class Comment < ApplicationRecord
-  belongs_to :ticket
-  belongs_to :user
+  belongs_to :commented_ticket, class_name: 'Ticket'
+  belongs_to :commenter, class_name: 'User'
+
+  # validates :body, presence: true
 end

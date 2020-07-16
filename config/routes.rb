@@ -13,9 +13,13 @@ Rails.application.routes.draw do
                       },
                      controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
 
-  # devise_scope :user do
-  #   root 'tickets#index', as: :user_root
-  # end
+  devise_scope :users do
+    authenticated do
+      root 'tickets#index', as: :user_root
+    end
 
-  root 'pages#home'
+    unauthenticated do
+      root 'pages#home'
+    end
+  end
 end

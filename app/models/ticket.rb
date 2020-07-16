@@ -5,7 +5,6 @@
 #  id           :integer          not null, primary key
 #  title        :string
 #  description  :text
-#  public       :boolean
 #  submitter_id :integer
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
@@ -16,16 +15,12 @@ class Ticket < ApplicationRecord
   has_many :ticket_topics, dependent: :destroy
   has_many :topics, through: :ticket_topics
 
-  has_many :comments, dependent: :destroy
-  has_many :commenters, through: :comments, class_name: 'User'
+  has_many :comments, foreign_key: :commented_ticket_id, dependent: :destroy
+  has_many :commenters, through: :comments, source: :commenter
 
   validates :title, :description, :submitter, presence: true
 
   has_one_attached :attachment
-
-  def self.public
-    where(public: true)
-  end
 
   def topics_attributes=(attributes)
     attributes.values.each do |topic_params|
