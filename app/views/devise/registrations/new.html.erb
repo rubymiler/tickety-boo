@@ -1,9 +1,9 @@
-<main class="signin-signup">
-  <div class="signin-signup--side-panel">
-      <%= image_tag('png/signup-pic.png') %>
+<main class="user">
+  <div class="user--side-panel">
+      <%= image_tag('signup-pic.png') %>
   </div>
   
-  <div class="signin-signup--form">
+  <div class="user--form">
     <a href="/auth/google_oauth2" class="btn-full btn-signup btn-auth"><span><i class="fab fa-google"></i></span><span>Sign up with Google</span></a>
 
     <p class="divider">Or</p>
@@ -11,15 +11,17 @@
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
       <%= render "devise/shared/error_messages", resource: resource %>
 
-      <fieldset class="field">
-        <%= f.label :first_name %>
-        <%= f.text_field :first_name, autofocus: true %>
-      </fieldset>
-
-      <fieldset class="field">
-        <%= f.label :last_name %>
-        <%= f.text_field :last_name %>
-      </fieldset>
+      <div class="form-field-group">
+        <fieldset class="field">
+          <%= f.label :first_name %>
+          <%= f.text_field :first_name, autofocus: true %>
+        </fieldset>
+  
+        <fieldset class="field">
+          <%= f.label :last_name %>
+          <%= f.text_field :last_name %>
+        </fieldset>
+      </div>
 
       <fieldset class="field">
         <%= f.label :email %>

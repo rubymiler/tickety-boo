@@ -1,11 +1,11 @@
 module UsersHelper
-  def show_avatar(resource)
-    if resource.avatar.attached?
-      image_tag(resource.avatar.variant(resize: '100x100!'), class: 'avatar-img')
-    elsif resource.avatar_url
-      image_tag(resource.avatar_url, class: 'avatar-img')
+  def user_avatar(user)
+    if user.avatar.attached?
+      image_tag(user.avatar, class: 'avatar-img')
+    elsif user.avatar_url
+      image_tag(user.avatar_url, class: 'avatar-img')
     else
-      render 'devise/shared/avatar'
+      content_tag(:p, user.initials, class: 'avatar-initials')
     end
   end
 end

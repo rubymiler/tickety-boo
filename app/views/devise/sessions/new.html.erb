@@ -1,12 +1,14 @@
-<main class="signin-signup">
+<main class="user">
 
-  <div class="signin-signup--form">
+  <div class="user--form">
 
     <a href="/auth/google_oauth2" class="btn-full btn-auth"><span><i class="fab fa-google"></i></span><span>Sign in with Google</span></a>
 
     <p class="divider">Or</p>
 
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <%= render "devise/shared/error_messages", resource: resource %>
+
       <fieldset class="field">
         <%= f.label :email %>
         <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
@@ -32,8 +34,8 @@
     <%= render "devise/shared/links" %>
   </div>
 
-  <div class="signin-signup--side-panel">
-    <%= image_tag('png/signin-pic.png') %>
+  <div class="user--side-panel">
+    <%= image_tag('signin-pic.png') %>
   </div>
 
 </main>

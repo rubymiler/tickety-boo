@@ -2,4 +2,14 @@
 @import "header";
 @import "home";
 @import "typography";
-@import "signin-signup";
+@import "user";
+
+::placeholder {
+  font-style: italic;
+  font-size: 1.6rem;
+}
+
+img {
+  max-width: 100%;
+  object-fit: cover;
+}

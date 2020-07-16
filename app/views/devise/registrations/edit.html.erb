@@ -1,57 +1,55 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
-
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
-
-  <div class="avatar-circle">
-    <%= show_avatar(resource) %>
+<main class="user user-edit">
+  <div class="user--side-panel user-edit--side-panel">
+    <%= user_avatar(current_user) %>
   </div>
+  
+  <div class="user--form">
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
 
-  <div class="field">
-    <%= f.file_field :avatar %>
-  </div>
+    <%= render "devise/shared/error_messages", resource: resource %>
 
-  <div class="field">
-    <%= f.label :first_name %><br />
-    <%= f.text_field :first_name, autofocus: true %>
-  </div>
+    <fieldset class="field">
+      <%= f.label :avatar %>
+      <%= f.file_field :avatar %>
+    </fieldset>
 
-  <div class="field">
-    <%= f.label :last_name %><br />
-    <%= f.text_field :last_name %>
-  </div>
+    <div class="form-field-group">
+      <fieldset class="field">
+        <%= f.label :first_name %>
+        <%= f.text_field :first_name, autofocus: true %>
+      </fieldset>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autocomplete: "email" %>
-  </div>
+      <fieldset class="field">
+        <%= f.label :last_name %>
+        <%= f.text_field :last_name %>
+      </fieldset>
+    </div>
 
-  <div class="field">
-    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-    <% if @minimum_password_length %>
-      <br />
-      <em><%= @minimum_password_length %> characters minimum</em>
+    <fieldset class="field">
+      <%= f.label :email %>
+      <%= f.email_field :email, autocomplete: "email" %>
+    </fieldset>
+
+    <fieldset class="field">
+      <%= f.label :password %>
+      <%= f.password_field :password, placeholder: "leave blank if you don't want to change it", autocomplete: "new-password" %>
+    </fieldset>
+
+    <fieldset class="field">
+      <%= f.label :password_confirmation %>
+      <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+    </fieldset>
+
+    <fieldset class="field">
+      <%= f.label :current_password %>
+      <%= f.password_field :current_password, placeholder: "your current password to confirm changes", autocomplete: "current-password" %>
+    </fieldset>
+
+    <div class="actions">
+      <%= f.button "Update", class: 'btn-full' %>
+    </div>
     <% end %>
+    <%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %> <br>
+    <%= link_to "Back", :back %>
   </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "current-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Update" %>
-  </div>
-<% end %>
-
-<h3>Cancel my account</h3>
-
-<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
-
-<%= link_to "Back", :back %>
+</main>

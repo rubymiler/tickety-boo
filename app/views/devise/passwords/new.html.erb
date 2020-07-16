@@ -1,5 +1,5 @@
 <main class="new-password">
-  <div class="signin-signup--form">
+  <div class="user--form">
     <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
       <%= render "devise/shared/error_messages", resource: resource %>
 

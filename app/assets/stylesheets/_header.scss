@@ -36,7 +36,7 @@ header {
     position: static;
     height: 8rem;
     grid-template-columns: 1fr max-content 1fr;
-    padding: 0 4rem;
+    padding: 0 5rem;
   }
 
   a {
@@ -110,6 +110,7 @@ header {
     display: flex;
     li {
       margin-bottom: 0;
+      padding: 0 2rem;
       list-style: none;
     }
   }
@@ -119,6 +120,7 @@ header {
   grid-column: 3 / 4;
   display: flex;
   justify-content: flex-end;
+  align-items: center;
 
   li {
     margin-left: 2rem;
