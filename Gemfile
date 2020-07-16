@@ -8,6 +8,7 @@ gem 'dotenv-rails', require: 'dotenv/rails-now'
 gem 'devise'
 gem 'mini_magick'
 gem 'omniauth-google-oauth2'
+gem 'cancancan'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.3', '>= 6.0.3.2'

@@ -1,5 +1,6 @@
 class TicketsController < ApplicationController
   before_action :set_ticket, only: %i[show edit update destroy]
+  load_and_authorize_resource
 
   def index
     @tickets = Ticket.all
