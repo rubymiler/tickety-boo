@@ -4,52 +4,55 @@
   </div>
   
   <div class="user--form">
-    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+    <div class="user--form-wrapper">
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
 
-    <%= render "devise/shared/error_messages", resource: resource %>
+        <%= render "devise/shared/error_messages", resource: resource %>
 
-    <fieldset class="field">
-      <%= f.label :avatar %>
-      <%= f.file_field :avatar %>
-    </fieldset>
+        <fieldset class="field">
+          <%= f.label :avatar %>
+          <%= f.file_field :avatar %>
+        </fieldset>
 
-    <div class="form-field-group">
-      <fieldset class="field">
-        <%= f.label :first_name %>
-        <%= f.text_field :first_name, autofocus: true %>
-      </fieldset>
+        <div class="form-field-group">
+          <fieldset class="field">
+            <%= f.label :first_name %>
+            <%= f.text_field :first_name, autofocus: true %>
+          </fieldset>
 
-      <fieldset class="field">
-        <%= f.label :last_name %>
-        <%= f.text_field :last_name %>
-      </fieldset>
-    </div>
+          <fieldset class="field">
+            <%= f.label :last_name %>
+            <%= f.text_field :last_name %>
+          </fieldset>
+        </div>
 
-    <fieldset class="field">
-      <%= f.label :email %>
-      <%= f.email_field :email, autocomplete: "email" %>
-    </fieldset>
+        <fieldset class="field">
+          <%= f.label :email %>
+          <%= f.email_field :email, autocomplete: "email" %>
+        </fieldset>
 
-    <fieldset class="field">
-      <%= f.label :password %>
-      <%= f.password_field :password, placeholder: "leave blank if you don't want to change it", autocomplete: "new-password" %>
-    </fieldset>
+        <fieldset class="field">
+          <%= f.label :password %>
+          <%= f.password_field :password, placeholder: "leave blank if you don't want to change it", autocomplete: "new-password" %>
+        </fieldset>
 
-    <fieldset class="field">
-      <%= f.label :password_confirmation %>
-      <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-    </fieldset>
+        <fieldset class="field">
+          <%= f.label :password_confirmation %>
+          <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+        </fieldset>
 
-    <fieldset class="field">
-      <%= f.label :current_password %>
-      <%= f.password_field :current_password, placeholder: "your current password to confirm changes", autocomplete: "current-password" %>
-    </fieldset>
+        <fieldset class="field">
+          <%= f.label :current_password %>
+          <%= f.password_field :current_password, placeholder: "your current password to confirm changes", autocomplete: "current-password" %>
+        </fieldset>
 
-    <div class="actions">
-      <%= f.button "Update", class: 'btn-full' %>
-    </div>
-    <% end %>
+        <div class="actions">
+          <%= f.button "Update", class: 'btn btn-pink' %>
+        </div>
+      <% end %>
+      
     <%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %> <br>
     <%= link_to "Back", :back %>
+    </div>
   </div>
 </main>

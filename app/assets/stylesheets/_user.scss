@@ -19,6 +19,9 @@ cursive;
   margin: auto;
   display: flex;
   flex-direction: row;
+  border-radius: 5px;
+  box-shadow: 0 2px 10px rgba(0,0,0,.15);
+  max-width: 90vw;
 
   &--side-panel {
     max-width: 514px;
@@ -29,13 +32,19 @@ cursive;
   }
 }
 
+.user-edit {
+  &--side-panel {
+    margin: auto;
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+
 @media screen and (max-width: 820px) {
   .user-edit { 
     flex-direction: column;
 
     &--side-panel {
-      margin: auto;
-      max-width: 90vw;
       display: block;
     }
   }
@@ -49,22 +58,10 @@ cursive;
   margin-left: 5rem;
   margin-right: 5rem;
 
-  button {
-    border: none;
-    font-size: 1.8rem;
-    margin-top: 1rem;
-    cursor: pointer;
+  &-wrapper {
+    margin-top: 4rem;
+    margin-bottom: 4rem;
   }
-}
-
-.btn-signup {
-  background-color: darken($color-blue, 20%);
-  transition: background-color 300ms;
-}
-
-.btn-signup:hover {
-  background-color: darken($color-blue, 40%);
-
 }
 
 .form-field-group {
@@ -74,58 +71,6 @@ cursive;
 
   .field:nth-of-type(2) {
     grid-column: 3 / 4;
-  }
-}
-
-fieldset {
-  position: relative;
-  border: none;
-}
-
-label {
-  display: block;
-  font-weight: bold;
-  margin-bottom: 0.3rem;
-}
-
-input[type="text"],
-input[type="number"],
-input[type="search"],
-input[type="password"],
-input[type="email"],
-input[type="url"],
-input[type="tel"] {
-  width: 100%;
-  font-size: 1.8rem;
-  height: 4rem;
-  padding: 1.2rem 1.5rem;
-  border: 1px solid $color-light-grey;
-  border-radius: 5px;
-  background-color: $color-light-grey;
-  transition: background-color 300ms;
-  margin-bottom: 1rem;
-
-  &:focus {
-    background-color: $color-white;
-    outline: none;
-  }
-}
-
-input[type="file"] {
-  font-size: 1.8rem;
-  margin-bottom: 1rem;
-}
-
-.btn-auth {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  margin-bottom: 4rem;
-
-  .fa-google {
-    font-size: 2.5rem;
-    margin-right: 2rem;
   }
 }
 

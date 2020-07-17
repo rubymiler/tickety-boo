@@ -1,51 +1,50 @@
-<%= form_for ticket do |f| %>
-
-<% if ticket.errors.any? %>
-  <div id="error_explanation">
-    <h2><%= pluralize(ticket.errors.count, "error") %> prohibited this ticket from being saved:</h2>
-
-    <ul>
-      <% ticket.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-    </ul>
-  </div>
-<% end %>
-
-  <div class="field">
-    <%= f.label :title %><br />
-    <%= f.text_field :title, autofocus: true %>
-  </div>
-
-  <div class="field">
-    <%= f.label :description %><br />
-    <%= f.text_area :description %>
-  </div>
-
-  <div class="field">
-    <%= f.label :attachment %><br />
-    <%= f.file_field :attachment %>
-  </div>
-
-  <h3>Topics</h3>
-  <div data-controller="nested-form">
-    <template data-target="nested-form.template">
-      <%= f.fields_for :topics, @ticket.topics.build, child_index: 'TEMPLATE_RECORD' do |topic| %>
-        <%= render 'topic_fields', form: topic %>
-      <% end %>
-    </template>
-
-    <%= f.fields_for :topics do |topic| %>
-      <%= render 'topic_fields', form: topic %>
-    <% end %>
-
-    <div data-target="nested-form.add_item">
-      <%= link_to "Add Topic", "#", data: { action: "nested-form#add_association" } %>
+<main class="create-update-ticket-post">
+  <% if ticket.errors.any? %>
+    <div id="error_explanation">
+      <ul>
+        <% ticket.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
     </div>
-  </div>
+  <% end %>
 
-  <div class="action">
-    <%= f.submit %>
-  </div>
+  <%= form_for ticket do |f| %>
+    <fieldset class="field">
+      <%= f.text_field :title, autofocus: true, placeholder: 'Title...', class: 'ticket-post-title' %>
+    </fieldset>
 
-<% end %>
+    <fieldset class="field">
+      <%= f.text_area :description, placeholder: 'describe your challenge ...', class: 'ticket-post-body' %>
+    </fieldset>
+
+    <fieldset class="field">
+      <%= f.label :attachment, 'attch a screenshot' %>
+      <%= f.file_field :attachment %>
+    </fieldset>
+
+    <label>pick topics</label>
+    <div data-controller="nested-form">
+      <template data-target="nested-form.template">
+        <%= f.fields_for :topics, @ticket.topics.build, child_index: 'TEMPLATE_RECORD' do |topic| %>
+          <%= render '/topics/fields', form: topic %>
+        <% end %>
+      </template>
+
+      <%= f.fields_for :topics do |topic| %>
+        <%= render 'topics/fields', form: topic %>
+      <% end %>
+
+      <div data-target="nested-form.add_item" class="topic-add">
+        <%= link_to "#", data: { action: "nested-form#add_association" } do %>
+          <i class="far fa-plus-square"></i>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="action">
+      <%= f.button 'Submit', class: 'btn btn-blue' %>
+    </div>
+  <% end %>
+
+</main>

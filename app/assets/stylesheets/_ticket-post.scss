@@ -1,0 +1,74 @@
+//COLOR VARIABLES
+$color-black: #0D0C22;
+$color-dark-grey: #5B5A6A;
+$color-light-grey: #E6E6E6;
+$color-white: #fff;
+
+$color-blue: #A9C5FB;
+$color-yellow: #F5DF49;
+$color-pink: #EF7B97;
+$color-green: #7FD5C1;
+
+//FONT VARIABLES
+$font-primary: 'Source Sans Pro', sans-serif;
+$font-display: 'Pacifico', cursive;
+
+.create-update-ticket-post {
+  width: 90vw;
+  max-width: 740px;
+  margin: 8rem auto;
+  label {
+    color: $color-dark-grey;
+  }
+}
+
+input.ticket-post-title {
+  font-size: 4rem;
+  height: 8rem;
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  margin-bottom: 2rem;
+
+  &::placeholder {
+    font-size: 4rem;
+  }
+}
+
+textarea.ticket-post-body {
+  border: none;
+  outline: none;
+  resize: none;
+  width: 100%;
+  height: calc(80vh - 35rem);
+  overflow: auto;
+  font-size: 1.8rem;
+  font-family: inherit;
+}
+
+.topic-remove,
+.topic-add {
+  font-size: 2rem;
+  a {
+    text-decoration: none;
+    color: $color-dark-grey;
+    transition: color 300ms;
+    &:hover {
+      color: $color-black;
+    }
+  }
+
+  @media only screen and (min-width: 500px) {
+    display: inline-block;
+  }
+}
+
+input.topic-field {
+  background-color: transparent;
+  width: auto;
+  border: none;
+  padding: 0;
+  font-size: 1.8rem;
+  margin-bottom: 0;
+}
+

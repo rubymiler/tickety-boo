@@ -3,14 +3,13 @@ class TicketsController < ApplicationController
   load_and_authorize_resource
 
   def index
-    @tickets = Ticket.all
+    @tickets = Ticket.accessible_by(current_ability, :read)
   end
 
   def show; end
 
   def new
     @ticket = Ticket.new
-    @topics = Topic.all.distinct
   end
 
   def create
@@ -26,7 +25,6 @@ class TicketsController < ApplicationController
   def edit; end
 
   def update
-    @ticket = Ticket.find(params[:id])
     if @ticket.update(ticket_params)
       redirect_to @ticket, notice: 'Ticket updated successfully.'
     else
@@ -35,7 +33,6 @@ class TicketsController < ApplicationController
   end
 
   def destroy
-    @ticket = Ticket.find(params[:id])
     @ticket.destroy
     redirect_to tickets_path
   end
@@ -47,6 +44,10 @@ class TicketsController < ApplicationController
   end
 
   def ticket_params
-    params.require(:ticket).permit(:title, :description, :attachment, topic_ids:[], topics_attributes: %i[name _destroy id])
+    params.require(:ticket).permit(:title,
+                                   :description,
+                                   :attachment,
+                                   topic_ids:[],
+                                   topics_attributes: %i[name _destroy id])
   end
 end

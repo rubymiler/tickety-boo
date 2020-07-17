@@ -10,9 +10,9 @@
   
     <ul class="links-container">
       <% if current_user %>
-        <li><a href="#">Popular Questions</a></li>
-        <li><a href="#">Your Tickets</a></li>
-        <li><a href="#">Submit a Ticket</a></li>
+        <li><%= link_to 'Popular Questions', posts_path %></li>
+        <li><%= link_to 'Your Tickets', tickets_path %></li>
+        <li><%= link_to 'New Ticket', new_ticket_path %></li>
       <% else %>
         <li><a href="#">About</a></li>
         <li><a href="#">Features</a></li>
@@ -32,7 +32,7 @@
         <li><%= link_to 'Log Out', destroy_user_session_path, method: 'delete' %></li>
       <% else %>
         <li><%= link_to 'Sign In', new_user_session_path %></li>
-        <li><%= link_to 'Sign Up', new_user_registration_path, class: 'btn btn-full'%></li>
+        <li><%= link_to 'Sign Up', new_user_registration_path, class: 'btn btn-pink'%></li>
       <% end %>
     </ul>
   

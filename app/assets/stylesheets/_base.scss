@@ -16,7 +16,7 @@ $font-display: 'Pacifico', cursive;
 // RESPONSIVE BREAKPOINTS
 $bp-largest: 1100px;
 
-//GLOBAL
+//LAYOUT
 *,
 *::before,
 *::after {
@@ -51,4 +51,118 @@ body {
 
 footer {
   margin-top: auto;
+}
+
+// GLOBAL
+
+::placeholder {
+  font-style: italic;
+  font-size: 1.6rem;
+}
+
+img {
+  max-width: 100%;
+  object-fit: cover;
+}
+
+h1 {
+  font-size: 4rem;
+  font-weight: 700;
+  line-height: 120%;
+}
+
+h2 {
+  font-size: 5rem;
+  margin-bottom: 3rem;
+}
+
+// BUTTONS
+
+button {
+  border: none;
+  font-size: 1.8rem;
+  margin-top: 1rem;
+  cursor: pointer;
+}
+
+.btn {
+  padding: 1rem 2rem;
+  border-radius: 5px;
+  color: $color-white;
+}
+
+.btn-pink {
+  background: $color-pink;
+  transition: background-color 300ms;
+
+  &:hover {
+    background-color: darken($color-pink, 10%);
+    color: $color-white;
+  }
+}
+
+.btn-blue {
+  background-color: darken($color-blue, 20%);
+  transition: background-color 300ms;
+
+  &:hover {
+    background-color: darken($color-blue, 40%);
+  }
+}
+
+.btn-auth {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 4rem;
+
+  .fa-google {
+    font-size: 2.5rem;
+    margin-right: 2rem;
+  }
+}
+
+// FORMS
+
+fieldset {
+  position: relative;
+  border: none;
+}
+
+label {
+  font-size: 1.8rem;
+  display: block;
+  font-weight: bold;
+  margin-bottom: 0.3rem;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="search"],
+input[type="password"],
+input[type="email"],
+input[type="url"],
+input[type="tel"] {
+  width: 100%;
+  font-size: 1.8rem;
+  height: 4rem;
+  padding: 1.2rem 1.5rem;
+  border: 1px solid $color-light-grey;
+  border-radius: 5px;
+  background-color: $color-light-grey;
+  transition: background-color 300ms;
+  margin-bottom: 1rem;
+
+  &:focus {
+    background-color: $color-white;
+    outline: none;
+  }
+}
+
+input[type="file"] {
+  font-size: 1.8rem;
+  padding-top: 1.2rem;
+  padding-bottom: 1.2rem;
+  margin-bottom: 1rem;
 }

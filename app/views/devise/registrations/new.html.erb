@@ -4,45 +4,46 @@
   </div>
   
   <div class="user--form">
-    <a href="/auth/google_oauth2" class="btn-full btn-signup btn-auth"><span><i class="fab fa-google"></i></span><span>Sign up with Google</span></a>
+    <div class="user--form-wrapper">
+      <a href="/auth/google_oauth2" class="btn btn-blue btn-auth"><span><i class="fab fa-google"></i></span><span>Sign up with Google</span></a>
 
-    <p class="divider">Or</p>
+      <p class="divider">Or</p>
 
-    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-      <%= render "devise/shared/error_messages", resource: resource %>
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+        <%= render "devise/shared/error_messages", resource: resource %>
 
-      <div class="form-field-group">
+        <div class="form-field-group">
+          <fieldset class="field">
+            <%= f.label :first_name %>
+            <%= f.text_field :first_name, autofocus: true %>
+          </fieldset>
+    
+          <fieldset class="field">
+            <%= f.label :last_name %>
+            <%= f.text_field :last_name %>
+          </fieldset>
+        </div>
+
         <fieldset class="field">
-          <%= f.label :first_name %>
-          <%= f.text_field :first_name, autofocus: true %>
+          <%= f.label :email %>
+          <%= f.email_field :email, autocomplete: "email" %>
         </fieldset>
-  
+
         <fieldset class="field">
-          <%= f.label :last_name %>
-          <%= f.text_field :last_name %>
+          <%= f.label :password %>
+          <%= f.password_field :password, autocomplete: "new-password", placeholder: "6+ characters" %>
         </fieldset>
-      </div>
 
-      <fieldset class="field">
-        <%= f.label :email %>
-        <%= f.email_field :email, autocomplete: "email" %>
-      </fieldset>
+        <fieldset class="field">
+          <%= f.label :password_confirmation %>
+          <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+        </fieldset>
 
-      <fieldset class="field">
-        <%= f.label :password %>
-        <%= f.password_field :password, autocomplete: "new-password", placeholder: "6+ characters" %>
-      </fieldset>
-
-      <fieldset class="field">
-        <%= f.label :password_confirmation %>
-        <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-      </fieldset>
-
-      <div class="actions">
-        <%= f.button "Sign up", class: 'btn-full btn-signup' %>
-      </div>
-    <% end %>
-
-    <%= render "devise/shared/links" %>
+        <div class="actions">
+          <%= f.button "Sign up", class: 'btn btn-blue' %>
+        </div>
+      <% end %>
+      <%= render "devise/shared/links" %>
+    </div>
   </div>
 </main>

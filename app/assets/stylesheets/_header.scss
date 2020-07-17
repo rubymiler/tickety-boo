@@ -126,16 +126,3 @@ header {
     margin-left: 2rem;
   }
 }
-
-.btn-full {
-  background: $color-pink;
-  padding: 1rem 2rem;
-  border-radius: 5px;
-  color: $color-white;
-  transition: background-color 300ms;
-
-  &:hover {
-    background-color: darken($color-pink, 10%);
-    color: $color-white;
-  }
-}
