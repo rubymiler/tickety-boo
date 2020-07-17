@@ -1,30 +1,33 @@
-<h2><%= @ticket.title %></h2>
-<p><em>By <%= @ticket.submitter.email %></em></p>
+<main class="show-ticket">
+  <h2><%= @ticket.title %></h2>
+  <p><em>By <%= @ticket.submitter.email %></em></p>
 
-<p><%= @ticket.description %></p>
+  <p><%= @ticket.description %></p>
 
-<h3>Topics</h3>
-<p>
-  <% @ticket.topics.each do |topic| %>
-    <%= link_to topic.name, topic_path(topic) %>
+  <h3>Topics</h3>
+  <p>
+    <% @ticket.topics.each do |topic| %>
+      <%= link_to topic.name, topic_path(topic) %>
+    <% end %>
+  </p>
+
+  <h3>Attachment</h3>
+  <% if @ticket.attachment.present? %>
+    <%= image_tag @ticket.attachment.variant(resize_to_limit: [150, nil]) %>
   <% end %>
-</p>
 
-<h3>Attachment</h3>
-<% if @ticket.attachment.present? %>
-  <%= image_tag @ticket.attachment.variant(resize_to_limit: [150, nil]) %>
-<% end %>
+  <h3>Comments</h3>
+  <% @ticket.comments.each do |comment| %>
+    <p><%= comment.body %></p>
+  <% end %>
 
-<h3>Comments</h3>
-<% @ticket.comments.each do |comment| %>
-  <p><%= comment.body %></p>
-<% end %>
+  <h3>Add a comment</h3>
+  <%= form_with(model: [@ticket, @ticket.comments.build]) do |form| %>
+    <p><%= form.text_area :body %></p>
+    <p><%= form.submit %></p>
+  <% end %>
 
-<h3>Add a comment</h3>
-<%= form_with(model: [@ticket, @ticket.comments.build]) do |form| %>
-  <p><%= form.text_area :body %></p>
-  <p><%= form.submit %></p>
-<% end %>
+  <%= link_to 'Back', tickets_path %> <br>
+  <%= link_to 'Edit', edit_ticket_path(@ticket) %>
 
-<%= link_to 'Back', tickets_path %> <br>
-<%= link_to 'Edit', edit_ticket_path(@ticket) %>
+</main>

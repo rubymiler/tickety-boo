@@ -1,5 +1,7 @@
-<h1>Popular Questions</h1>
-
-<%= link_to 'Add ticket', new_ticket_path %>
-
-<%= render @tickets %>
+<main class="ticket-index">
+  <% if @tickets.present? %>
+    <%= render @tickets %>
+  <% else %>
+    <%= render 'ticket_cta' %>
+  <% end %>
+</main>

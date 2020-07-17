@@ -22,6 +22,14 @@ class Ticket < ApplicationRecord
 
   has_one_attached :attachment
 
+  def self.resolved
+    where(resolved: true)
+  end
+
+  def self.unresolved
+    where(resolved: false)
+  end
+
   def topics_attributes=(attributes)
     attributes.values.each do |topic_params|
       next unless topic_params[:name].present?

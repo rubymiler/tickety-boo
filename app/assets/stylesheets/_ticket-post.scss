@@ -13,9 +13,11 @@ $color-green: #7FD5C1;
 $font-primary: 'Source Sans Pro', sans-serif;
 $font-display: 'Pacifico', cursive;
 
-.create-update-ticket-post {
+.new-ticket,
+.edit-ticket,
+.show-ticket {
   width: 90vw;
-  max-width: 740px;
+  max-width: 95ch;
   margin: 8rem auto;
   label {
     color: $color-dark-grey;
@@ -40,7 +42,7 @@ textarea.ticket-post-body {
   outline: none;
   resize: none;
   width: 100%;
-  height: calc(80vh - 35rem);
+  height: calc(60vh - 35rem);
   overflow: auto;
   font-size: 1.8rem;
   font-family: inherit;
@@ -63,9 +65,13 @@ textarea.ticket-post-body {
   }
 }
 
+.topic-form {
+  margin-bottom: 2rem;
+}
+
 input.topic-field {
   background-color: transparent;
-  width: auto;
+  width: 60%;
   border: none;
   padding: 0;
   font-size: 1.8rem;

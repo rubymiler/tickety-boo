@@ -1,14 +1,13 @@
-<main class="create-update-ticket-post">
+<div class="ticket-form">
   <% if ticket.errors.any? %>
-    <div id="error_explanation">
-      <ul>
-        <% ticket.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
+  <div id="error_explanation">
+    <ul>
+      <% ticket.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
   <% end %>
-
   <%= form_for ticket do |f| %>
     <fieldset class="field">
       <%= f.text_field :title, autofocus: true, placeholder: 'Title...', class: 'ticket-post-title' %>
@@ -24,7 +23,7 @@
     </fieldset>
 
     <label>pick topics</label>
-    <div data-controller="nested-form">
+    <div data-controller="nested-form" class="topic-form">
       <template data-target="nested-form.template">
         <%= f.fields_for :topics, @ticket.topics.build, child_index: 'TEMPLATE_RECORD' do |topic| %>
           <%= render '/topics/fields', form: topic %>
@@ -43,8 +42,7 @@
     </div>
 
     <div class="action">
-      <%= f.button 'Submit', class: 'btn btn-blue' %>
+      <%= f.submit class: "btn btn-blue" %>
     </div>
   <% end %>
-
-</main>
+</div>

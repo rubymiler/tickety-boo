@@ -3,7 +3,7 @@ class TicketsController < ApplicationController
   load_and_authorize_resource
 
   def index
-    @tickets = Ticket.accessible_by(current_ability, :read)
+    @tickets = Ticket.accessible_by(current_ability, :read).includes(:submitter)
   end
 
   def show; end

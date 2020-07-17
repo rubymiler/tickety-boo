@@ -1,6 +1,23 @@
-<li>
-  <%= link_to ticket.title, ticket_path(ticket) %>
-  <%= link_to 'Delete', ticket_path(ticket), method: :delete %>
-</li>
-
-<!-- might be too long to load; no partial for iteration -->
+<div class="ticket-card">
+  <div class="ticket-submitter">
+    <div class="avatar-circle">
+      <%= user_avatar(ticket.submitter) %>
+    </div>
+    <div class="submitter-name">
+      <%= ticket.submitter.name %>
+    </div>
+  </div>
+  <div class="ticket-time">
+    <p><%= ticket_creation_time(ticket) %></p>
+  </div>
+  <div class="ticket-status">
+    <%= ticket_status(ticket) %>
+  </div>
+  <div class="ticket-content">
+    <h4><%= ticket.title %></h4>
+    <p><%= truncate(ticket.description, length: 80) %></p>
+  </div>
+  <div class="ticket-link">
+    <%= link_to 'View Ticket >', ticket_path(ticket) %>
+  </div>
+</div>
