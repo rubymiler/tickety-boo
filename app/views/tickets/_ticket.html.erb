@@ -1,23 +1,16 @@
 <div class="ticket-card">
-  <div class="ticket-submitter">
-    <div class="avatar-circle">
-      <%= user_avatar(ticket.submitter) %>
-    </div>
-    <div class="submitter-name">
-      <%= ticket.submitter.name %>
-    </div>
+  <%= render partial: 'user_preview', locals: { user: ticket.submitter, resource: ticket } %>
+  <%= ticket_status(ticket) %>
+
+  <div class="ticket-card__content">
+    <h4 class="ticket-title"><%= ticket.title %></h4>
+    <p class="ticket-body"><%= truncate(ticket.description, length: 80) %></p>
   </div>
-  <div class="ticket-time">
-    <p><%= ticket_creation_time(ticket) %></p>
-  </div>
-  <div class="ticket-status">
-    <%= ticket_status(ticket) %>
-  </div>
-  <div class="ticket-content">
-    <h4><%= ticket.title %></h4>
-    <p><%= truncate(ticket.description, length: 80) %></p>
-  </div>
-  <div class="ticket-link">
-    <%= link_to 'View Ticket >', ticket_path(ticket) %>
+
+  <div class="ticket-card__link">
+    <%= link_to ticket_path(ticket) do %>
+      <p>View Ticket</p>
+      <i class="fas fa-angle-right"></i>
+    <% end %>
   </div>
 </div>

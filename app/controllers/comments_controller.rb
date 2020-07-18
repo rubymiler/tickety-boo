@@ -1,4 +1,6 @@
 class CommentsController < ApplicationController
+  # write nested routes here for the tickets
+
   def create
     @ticket = Ticket.find(params[:ticket_id])
     @comment = @ticket.comments.create(comment_params)
@@ -12,6 +14,6 @@ class CommentsController < ApplicationController
   private
 
   def comment_params
-    params.require(:comment).permit(:body)
+    params.require(:comment).permit(:ticket_id, :body)
   end
 end

@@ -1,13 +1,19 @@
 module TicketsHelper
   def ticket_status(ticket)
     if ticket.resolved
-      content_tag(:p, 'resolved')
+      content_tag(:div, 'resolved', class: 'status status-green')
     else
-      content_tag(:p, 'in progress')
+      content_tag(:div, 'in progress', class: 'status status-yellow')
     end
   end
 
-  def ticket_creation_time(ticket)
-    ticket.created_at.strftime('%b %d, %Y')
+  def toggle_status_link(ticket)
+    link_to toggle_status_ticket_path(ticket), method: :post do
+      if ticket.resolved
+        'In Progress?'
+      else
+        'Resolved?'
+      end
+    end
   end
 end

@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
   resources :tickets do
     resources :comments
+    member do
+      post :toggle_status
+    end
   end
 
   resources :posts

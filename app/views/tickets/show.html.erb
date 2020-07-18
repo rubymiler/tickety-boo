@@ -1,33 +1,42 @@
-<main class="show-ticket">
-  <h2><%= @ticket.title %></h2>
-  <p><em>By <%= @ticket.submitter.email %></em></p>
+<main class="ticket-show">
+  <article class="ticket-show__content">
+    <h2><%= @ticket.title %></h2>
 
-  <p><%= @ticket.description %></p>
+    <%= render partial: 'user_preview', locals: { user: @ticket.submitter, resource: @ticket } %>
 
-  <h3>Topics</h3>
-  <p>
-    <% @ticket.topics.each do |topic| %>
-      <%= link_to topic.name, topic_path(topic) %>
+    <%= ticket_status(@ticket) %>
+
+    <% if @ticket.attachment.present? %>
+      <div class="ticket-show__attachment">
+        <%= image_tag @ticket.attachment.variant(resize_to_limit: [270, nil]) %>
+      </div>
     <% end %>
-  </p>
 
-  <h3>Attachment</h3>
-  <% if @ticket.attachment.present? %>
-    <%= image_tag @ticket.attachment.variant(resize_to_limit: [150, nil]) %>
-  <% end %>
+    <p class="ticket-show__description"><%= @ticket.description %></p>
 
-  <h3>Comments</h3>
-  <% @ticket.comments.each do |comment| %>
-    <p><%= comment.body %></p>
-  <% end %>
+    <ul class="ticket-show__topics">
+      <%= render @ticket.topics %>
+    </ul>
 
-  <h3>Add a comment</h3>
-  <%= form_with(model: [@ticket, @ticket.comments.build]) do |form| %>
-    <p><%= form.text_area :body %></p>
-    <p><%= form.submit %></p>
-  <% end %>
+    <ul class="ticket-show__comments">
+      <%= render @comments || 'No comments yet.' %>
+    </ul>
 
-  <%= link_to 'Back', tickets_path %> <br>
-  <%= link_to 'Edit', edit_ticket_path(@ticket) %>
+    <ul class="ticket-show__links">
+      <%= link_to 'Back', tickets_path %>
+      <%= link_to 'Edit', edit_ticket_path(@ticket) %>
+    </ul>
+  </article>
 
+  <aside class="ticket-show__actions">
+    <div><%= toggle_status_link(@ticket) %></div>
+
+    <a href="#">Request a meeting</a>
+
+    <%= form_for(@comment, url: '#') do |f| %>
+      <%= f.text_area :body, class: 'comment-input' %>
+      <%= f.submit class: 'btn btn-blue' %>
+    <% end %>
+
+  </aside>
 </main>

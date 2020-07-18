@@ -1,12 +1,16 @@
 class TicketsController < ApplicationController
-  before_action :set_ticket, only: %i[show edit update destroy]
+  before_action :set_ticket, only: %i[show edit update destroy toggle_status]
   load_and_authorize_resource
 
   def index
     @tickets = Ticket.accessible_by(current_ability, :read).includes(:submitter)
   end
 
-  def show; end
+  def show
+    @ticket = Ticket.includes(:comments).find(params[:id])
+    @comments = @ticket.comments
+    @comment = @ticket.comments.new
+  end
 
   def new
     @ticket = Ticket.new
@@ -35,6 +39,12 @@ class TicketsController < ApplicationController
   def destroy
     @ticket.destroy
     redirect_to tickets_path
+  end
+
+  def toggle_status
+    @ticket.resolved = !@ticket.resolved
+    @ticket.save
+    redirect_to @ticket
   end
 
   private

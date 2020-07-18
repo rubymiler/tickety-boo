@@ -1,7 +1,3 @@
 <main class="ticket-index">
-  <% if @tickets.present? %>
-    <%= render @tickets %>
-  <% else %>
-    <%= render 'ticket_cta' %>
-  <% end %>
+  <%= render(@tickets) || render(partial: 'ticket_cta') %>
 </main>
