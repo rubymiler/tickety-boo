@@ -1,5 +1,6 @@
 <li>
-  <div class="comment">
-    <p><%= comment.body %></p>
-  </div>
+  <p><%= comment.commenter.name %></p>
+  <p><%= detailed_creation_time(comment) %></p>
+  <p><%= comment.body %></p>
+  <hr>
 </li>

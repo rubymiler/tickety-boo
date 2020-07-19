@@ -6,11 +6,7 @@ class TicketsController < ApplicationController
     @tickets = Ticket.accessible_by(current_ability, :read).includes(:submitter)
   end
 
-  def show
-    @ticket = Ticket.includes(:comments).find(params[:id])
-    @comments = @ticket.comments
-    @comment = @ticket.comments.new
-  end
+  def show; end
 
   def new
     @ticket = Ticket.new

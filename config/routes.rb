@@ -18,6 +18,8 @@ Rails.application.routes.draw do
                       },
                      controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
 
+  mount ActionCable.server => '/cable'
+
   devise_scope :users do
     authenticated do
       root 'tickets#index', as: :user_root

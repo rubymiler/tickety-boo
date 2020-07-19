@@ -1,0 +1,4 @@
+<%= form_for(comment, url: '#') do |f| %>
+  <%= f.text_area :body, class: 'comment-input' %>
+  <%= f.submit class: 'btn btn-blue' %>
+<% end %>

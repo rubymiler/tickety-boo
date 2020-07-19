@@ -13,5 +13,7 @@ class Comment < ApplicationRecord
   belongs_to :commented_ticket, class_name: 'Ticket'
   belongs_to :commenter, class_name: 'User'
 
-  # validates :body, presence: true
+  validates :body, presence: true, length: { in: 10..1000 }
+
+  after_create_commit { CommentBroadcastJob.perform_later(self) }
 end
