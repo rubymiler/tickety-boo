@@ -38,6 +38,14 @@ class Ticket < ApplicationRecord
     where(public: false)
   end
 
+  def self.search(query)
+    if query.present?
+      where('title LIKE ?', "%#{query}%")
+    else
+      all
+    end
+  end
+
   def topics_attributes=(attributes)
     attributes.values.each do |topic_params|
       next unless topic_params[:name].present?

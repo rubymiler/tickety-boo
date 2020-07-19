@@ -51,7 +51,7 @@ class TicketsController < ApplicationController
   end
 
   def faq
-    @tickets = Ticket.public.order(created_at: :desc).page(params[:page]).per(10)
+    @tickets = Ticket.public.search(params[:query]).order(created_at: :desc).page(params[:page]).per(10)
   end
 
   private
@@ -64,6 +64,7 @@ class TicketsController < ApplicationController
     params.require(:ticket).permit(:title,
                                    :description,
                                    :attachment,
+                                   :query,
                                    topic_ids:[],
                                    topics_attributes: %i[name _destroy id])
   end

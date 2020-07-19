@@ -1,6 +1,9 @@
 <main class="ticket-public">
   <section class="search">
-
+    <%= form_tag(faq_tickets_path, method: :get, class: 'search-form') do %>
+      <%= text_field_tag :query, params[:query], placeholder: 'Search ...' %>
+      <%= submit_tag '', style: "display: none;" %>
+    <% end %>
   </section>
   <section class="ticket-list">
     <% @tickets.each do |ticket| %>
