@@ -12,9 +12,9 @@ class Ability
       can :create, Comment
       can :manage, Comment, commenter_id: user.id
     else
-      can :create, Ticket
+      can :create, [Ticket, Comment]
+      can :read, Ticket, public: true
       can %i[read update destroy toggle_resolve], Ticket, submitter_id: user.id
-      can :create, Comment
       can :manage, Comment, commenter_id: user.id
     end
   end

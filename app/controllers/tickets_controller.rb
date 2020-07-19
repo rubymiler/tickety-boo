@@ -1,9 +1,10 @@
 class TicketsController < ApplicationController
   before_action :set_ticket, only: %i[show edit update destroy toggle_resolve toggle_public]
-  load_and_authorize_resource
+  load_and_authorize_resource except: :faq
 
   def index
-    @tickets = Ticket.accessible_by(current_ability, :read).includes(:submitter)
+    @tickets = @tickets.includes(:submitter)
+    @tickets = @tickets.where(submitter_id: current_user.id) if current_user.member?
   end
 
   def show; end

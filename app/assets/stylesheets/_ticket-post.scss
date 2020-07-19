@@ -15,7 +15,8 @@ $font-display: 'Pacifico', cursive;
 
 .ticket,
 .ticket-index,
-.ticket-show {
+.ticket-show,
+.ticket-public {
   max-width: 90vw;
   margin: 6rem auto;
   font-size: 2rem;
@@ -195,8 +196,9 @@ input.topic-field {
 
 .ticket-show__topics {
   display: flex;
+  flex-flow: row wrap;
   & > li {
-    margin-right: 1rem;
+    margin-right: .75rem;
   }
 }
 
@@ -250,4 +252,33 @@ input.topic-field {
   & > * {
     margin-top: 3rem;
   }
+}
+
+.ticket-list {
+  & > div {
+    display: grid;
+    grid-template-columns: 20% 80%;
+    margin-top: 4rem;
+  }
+
+  &__time {
+    margin-top: 1rem;
+  }
+
+}
+
+.ticket-list__preview {
+  h4 {
+    margin-bottom: 1rem;
+  }
+
+  h4 a {
+      color: darken($color-pink, 15%);
+      font-size: 2.5rem;
+      transition: color 300ms;
+
+      &:hover {
+        color: #d11946;
+      }
+    }
 }

@@ -9,8 +9,8 @@
     <input type="checkbox" class="nav-toggle" id="nav-toggle">
   
     <ul class="links-container">
-      <% if current_user %>
-        <li><%= link_to 'Popular Questions', url: '#' %></li>
+      <% if user_signed_in? %>
+        <li><%= link_to 'Popular Questions', faq_tickets_path %></li>
         <li><%= link_to 'Your Tickets', tickets_path %></li>
         <li><%= link_to 'New Ticket', new_ticket_path %></li>
       <% else %>

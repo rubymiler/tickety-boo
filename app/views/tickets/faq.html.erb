@@ -1,0 +1,20 @@
+<main class="ticket-public">
+  <section class="search">
+
+  </section>
+  <section class="ticket-list">
+    <% @tickets.each do |ticket| %>
+      <div>
+        <div class="ticket-list__time">
+          <%= date_creation_time(ticket) %>
+        </div>
+        <div class="ticket-list__preview">
+          <h4><%= link_to ticket.title, ticket_path(ticket) %></h4>
+          <div class="ticket-show__topics">
+            <%= render ticket.topics || '' %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </section>
+</main>
