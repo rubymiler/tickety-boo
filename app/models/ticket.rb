@@ -30,6 +30,14 @@ class Ticket < ApplicationRecord
     where(resolved: false)
   end
 
+  def self.public
+    where(public: true)
+  end
+
+  def self.private
+    where(public: false)
+  end
+
   def topics_attributes=(attributes)
     attributes.values.each do |topic_params|
       next unless topic_params[:name].present?

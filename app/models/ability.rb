@@ -8,12 +8,12 @@ class Ability
     if user.manager?
       can :manage, :all
     elsif user.agent?
-      can %i[read toggle_status], Ticket
+      can %i[read toggle_resolve toggle_public], Ticket
       can :create, Comment
       can :manage, Comment, commenter_id: user.id
     else
       can :create, Ticket
-      can %i[read update destroy toggle_status], Ticket, submitter_id: user.id
+      can %i[read update destroy toggle_resolve], Ticket, submitter_id: user.id
       can :create, Comment
       can :manage, Comment, commenter_id: user.id
     end

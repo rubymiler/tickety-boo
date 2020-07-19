@@ -7,8 +7,8 @@ module TicketsHelper
     end
   end
 
-  def toggle_status_link(ticket)
-    link_to toggle_status_ticket_path(ticket), method: :post do
+  def toggle_resolve_link(ticket)
+    link_to toggle_resolve_ticket_path(ticket), method: :post do
       if ticket.resolved
         'In Progress?'
       else

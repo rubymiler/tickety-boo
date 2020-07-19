@@ -1,9 +1,11 @@
 Rails.application.routes.draw do
   resources :tickets do
-    resources :comments, only: %i[create edit update destroy]
+    resources :comments, only: %i[create destroy]
     member do
-      post :toggle_status
+      post :toggle_resolve
+      post :toggle_public
     end
+    get 'faq', on: :collection
   end
 
   resources :topics, only: %i[index show]

@@ -1,5 +1,5 @@
 class TicketsController < ApplicationController
-  before_action :set_ticket, only: %i[show edit update destroy toggle_status]
+  before_action :set_ticket, only: %i[show edit update destroy toggle_resolve toggle_public]
   load_and_authorize_resource
 
   def index
@@ -37,10 +37,20 @@ class TicketsController < ApplicationController
     redirect_to tickets_path
   end
 
-  def toggle_status
+  def toggle_resolve
     @ticket.resolved = !@ticket.resolved
     @ticket.save
     redirect_to @ticket
+  end
+
+  def toggle_public
+    @ticket.public = !@ticket.public
+    @ticket.save
+    redirect_to tickets_path
+  end
+
+  def faq
+    @tickets = Ticket.public
   end
 
   private
