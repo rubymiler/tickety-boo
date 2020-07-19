@@ -1,8 +1,6 @@
 class CommentsController < ApplicationController
-  # write nested routes here for the tickets
-
   def create
-    @comment = current_user.comments.create(comment_params)
+    @comment = current_user.comments.build(comment_params)
     redirect_to ticket_path(@ticket)
   end
 
