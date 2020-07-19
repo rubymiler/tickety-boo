@@ -27,8 +27,6 @@ class User < ApplicationRecord
   has_many :comments, foreign_key: :commenter_id
   has_many :commented_tickets, through: :comments
 
-  has_many :posts
-
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :omniauthable, omniauth_providers: [:google_oauth2]
 

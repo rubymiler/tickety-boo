@@ -10,7 +10,7 @@
   
     <ul class="links-container">
       <% if current_user %>
-        <li><%= link_to 'Popular Questions', posts_path %></li>
+        <li><%= link_to 'Popular Questions', url: '#' %></li>
         <li><%= link_to 'Your Tickets', tickets_path %></li>
         <li><%= link_to 'New Ticket', new_ticket_path %></li>
       <% else %>

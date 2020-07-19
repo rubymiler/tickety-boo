@@ -6,8 +6,6 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :posts
-
   resources :topics, only: %i[index show]
 
   devise_for :users, path: '',

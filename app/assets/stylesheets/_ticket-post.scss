@@ -202,7 +202,7 @@ input.topic-field {
 
 .ticket-show__comments {
   font-size: 1.8rem;
-  background-color: lighten($color-yellow, 30%);
+  background-color: $color-light-grey;
   padding: 2rem;
   padding-top: 0;
   border-radius: 4px;

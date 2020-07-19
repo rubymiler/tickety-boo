@@ -43,21 +43,6 @@ ActiveRecord::Schema.define(version: 2020_07_16_225201) do
     t.index ["commenter_id"], name: "index_comments_on_commenter_id"
   end
 
-  create_table "post_topics", force: :cascade do |t|
-    t.integer "topic_id", null: false
-    t.integer "post_id", null: false
-    t.index ["post_id"], name: "index_post_topics_on_post_id"
-    t.index ["topic_id"], name: "index_post_topics_on_topic_id"
-  end
-
-  create_table "posts", force: :cascade do |t|
-    t.string "title"
-    t.text "content"
-    t.integer "vote"
-    t.integer "user_id", null: false
-    t.index ["user_id"], name: "index_posts_on_user_id"
-  end
-
   create_table "ticket_topics", force: :cascade do |t|
     t.integer "ticket_id", null: false
     t.integer "topic_id", null: false
@@ -74,6 +59,7 @@ ActiveRecord::Schema.define(version: 2020_07_16_225201) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.boolean "resolved", default: false
+    t.boolean "public", default: false
     t.index ["submitter_id"], name: "index_tickets_on_submitter_id"
   end
 
@@ -104,9 +90,6 @@ ActiveRecord::Schema.define(version: 2020_07_16_225201) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "comments", "tickets", column: "commented_ticket_id"
   add_foreign_key "comments", "users", column: "commenter_id"
-  add_foreign_key "post_topics", "posts"
-  add_foreign_key "post_topics", "topics"
-  add_foreign_key "posts", "users"
   add_foreign_key "ticket_topics", "tickets"
   add_foreign_key "ticket_topics", "topics"
   add_foreign_key "tickets", "users", column: "submitter_id"
