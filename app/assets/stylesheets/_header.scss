@@ -38,15 +38,6 @@ header {
     grid-template-columns: 1fr max-content 1fr;
     padding: 0 5rem;
   }
-
-  a {
-    color: $color-dark-grey;
-    transition: color 300ms;
-
-    &:hover {
-      color: $color-black;
-    }
-  }
 }
 
 .nav-toggle {

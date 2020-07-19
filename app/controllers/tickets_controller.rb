@@ -3,7 +3,7 @@ class TicketsController < ApplicationController
   load_and_authorize_resource except: :faq
 
   def index
-    @tickets = @tickets.includes(:submitter)
+    @tickets = @tickets.includes(:submitter).order(created_at: :desc).page(params[:page])
     @tickets = @tickets.where(submitter_id: current_user.id) if current_user.member?
   end
 
@@ -51,7 +51,7 @@ class TicketsController < ApplicationController
   end
 
   def faq
-    @tickets = Ticket.public
+    @tickets = Ticket.public.order(created_at: :desc).page(params[:page]).per(10)
   end
 
   private

@@ -46,6 +46,10 @@ $font-display: 'Pacifico', cursive;
   }
 }
 
+.ticket-public > section {
+  margin-bottom: 4rem;
+}
+
 input.ticket-post-title {
   font-size: 4rem;
   height: 8rem;
@@ -86,14 +90,6 @@ textarea {
 .topic-remove,
 .topic-add {
   font-size: 2rem;
-  a {
-    text-decoration: none;
-    color: $color-dark-grey;
-    transition: color 300ms;
-    &:hover {
-      color: $color-black;
-    }
-  }
 
   @media only screen and (min-width: 500px) {
     display: inline-block;
@@ -165,16 +161,10 @@ input.topic-field {
   flex-direction: row;
   align-items: center;
   justify-content: flex-end;
-  color: $color-dark-grey;
-  transition: color 300ms;
 
   i {
     font-size: 2rem;
     margin-left: 1rem;
-  }
-
-  &:hover {
-    color: $color-black;
   }
 }
 
@@ -264,7 +254,6 @@ input.topic-field {
   &__time {
     margin-top: 1rem;
   }
-
 }
 
 .ticket-list__preview {
