@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   resources :tickets do
-    resources :comments
+    resources :comments, only: %i[create edit update destroy]
     member do
       post :toggle_status
     end

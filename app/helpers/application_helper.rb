@@ -4,6 +4,6 @@ module ApplicationHelper
   end
 
   def detailed_creation_time(item)
-    item.created_at.strftime('%m-%e-%y %H:%M')
+    item.created_at.strftime('%m-%e-%y %l:%M %p')
   end
 end

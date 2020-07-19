@@ -2,7 +2,7 @@
   <article class="ticket-show__content">
     <h2><%= @ticket.title %></h2>
 
-    <%= render partial: 'user_preview', locals: { user: @ticket.submitter, resource: @ticket } %>
+    <%= render partial: 'tickets/user_preview', locals: { user: @ticket.submitter, resource: @ticket } %>
 
     <%= ticket_status(@ticket) %>
 
@@ -18,13 +18,18 @@
       <%= render @ticket.topics %>
     </ul>
 
-    <ul class="ticket-show__comments" id="comments" data-ticket-id="<%= @ticket.id %>">
+    <ul class="ticket-show__comments">
       <%= render(@ticket.comments) || 'No comments yet.' %>
     </ul>
 
     <ul class="ticket-show__links">
-      <%= link_to 'Back', tickets_path %>
-      <%= link_to 'Edit', edit_ticket_path(@ticket) %>
+      <div class="back-edit-links">
+        <%= link_to 'Back', tickets_path %>
+        <%= link_to 'Edit', edit_ticket_path(@ticket) if can? :update, @ticket %>
+      </div>
+      <div class="delete-btn">
+        <%= link_to 'Delete', ticket_path(@ticket), method: :delete, data: {confirm: "Are you sure?"}, class: 'btn btn-pink' if can? :destroy, @ticket %>
+      </div>
     </ul>
   </article>
 
@@ -33,6 +38,6 @@
 
     <a href="#">Request a meeting</a>
 
-    <%= render partial: 'comments/form', locals: { comment: @ticket.comments.build } %>
+    <%= render partial: 'comments/form', locals: { ticket: @ticket, comment: @ticket.comments.build } %>
   </aside>
 </main>
