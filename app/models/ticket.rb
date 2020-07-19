@@ -22,6 +22,14 @@ class Ticket < ApplicationRecord
 
   has_one_attached :attachment
 
+  def self.search(query)
+    if query.present?
+      where('title LIKE ?', "%#{query}%")
+    else
+      all
+    end
+  end
+
   def self.resolved
     where(resolved: true)
   end
@@ -36,14 +44,6 @@ class Ticket < ApplicationRecord
 
   def self.private
     where(public: false)
-  end
-
-  def self.search(query)
-    if query.present?
-      where('title LIKE ?', "%#{query}%")
-    else
-      all
-    end
   end
 
   def topics_attributes=(attributes)

@@ -1,14 +1,21 @@
 Rails.application.routes.draw do
   resources :tickets do
     resources :comments, only: %i[create destroy]
+
     member do
       post :toggle_resolve
       post :toggle_public
+      get :public_show
     end
-    get 'faq', on: :collection
+
+    collection do
+      get :faq
+      get :pending
+      get :resolved
+    end
   end
 
-  resources :topics, only: %i[index show]
+  resources :topics, only: :show
 
   devise_for :users, path: '',
                      path_names: {

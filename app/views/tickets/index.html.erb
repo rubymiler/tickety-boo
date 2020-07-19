@@ -1,3 +1,14 @@
 <main class="ticket-index">
-  <%= render(@tickets) || render(partial: 'ticket_cta') %>
+  <section class="ticket-index__resolved">
+    <ul>
+      <li><%= link_to 'Pending Tickets', pending_tickets_path %></li>
+      <li><%= link_to 'Resolved Tickets', resolved_tickets_path %></li>
+    </ul>
+  </section>
+  <section class="ticket-card-list">
+    <%= render(@tickets) || render(partial: 'ticket_cta') %>
+  </section>
+  <section class="pagination">
+    <%= paginate @tickets %>
+  </section>
 </main>

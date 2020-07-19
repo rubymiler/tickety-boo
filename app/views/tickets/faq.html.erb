@@ -12,7 +12,7 @@
           <%= date_creation_time(ticket) %>
         </div>
         <div class="ticket-list__preview">
-          <h4><%= link_to ticket.title, ticket_path(ticket) %></h4>
+          <h4><%= link_to ticket.title, public_show_ticket_path(ticket) %></h4>
           <div class="ticket-show__topics">
             <%= render ticket.topics || '' %>
           </div>

@@ -30,6 +30,12 @@ $font-display: 'Pacifico', cursive;
 }
 
 .ticket-index {
+  & > section {
+    margin-bottom: 4rem;
+  }
+}
+
+.ticket-card-list {
   width: 1366px;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
@@ -182,6 +188,10 @@ input.topic-field {
   & > * {
     margin-top: 3rem;
   }
+}
+
+.ticket-show__public {
+  padding-right: 0;
 }
 
 .ticket-show__topics {

@@ -1,0 +1,25 @@
+<main class="ticket">
+  <article class="ticket-show__content ticket-show__public">
+    <h2><%= @ticket.title %></h2>
+
+    <% if @ticket.attachment.present? %>
+      <div class="ticket-show__attachment">
+        <%= image_tag @ticket.attachment.variant(resize_to_limit: [270, nil]) %>
+      </div>
+    <% end %>
+
+    <p class="ticket-show__description"><%= @ticket.description %></p>
+
+    <ul class="ticket-show__topics">
+      <%= render @ticket.topics %>
+    </ul>
+
+    <ul class="ticket-show__comments">
+      <%= render(@ticket.comments) || 'No comments yet.' %>
+    </ul>
+
+  </article>
+
+  <%= link_to 'Back', faq_tickets_path %>
+
+</main>
