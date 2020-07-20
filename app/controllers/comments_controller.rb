@@ -14,13 +14,13 @@ class CommentsController < ApplicationController
   def update
     @ticket = Ticket.find(params[:ticket_id])
     @ticket.update(answer: @comment.body)
-    redirect_to faq_tickets_path
+    redirect_to public_show_ticket_path(@ticket)
   end
 
   def destroy
     @comment = Comment.find(params[:id])
     @comment.destroy
-    redirect_to ticket_path(params[:ticket_id])
+    redirect_to @ticket
   end
 
   private

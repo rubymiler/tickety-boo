@@ -48,11 +48,11 @@ class TicketsController < ApplicationController
   def toggle_public
     @ticket.public = !@ticket.public
     @ticket.save
-    redirect_to tickets_path
+    redirect_to public_show_ticket_path(@ticket)
   end
 
   def faq
-    @tickets = Ticket.public.search(params[:query]).order(created_at: :desc).page(params[:page]).per(10)
+    @tickets = Ticket.includes(:topics).public.search(params[:query]).order(created_at: :desc).page(params[:page]).per(10)
   end
 
   def public_show; end

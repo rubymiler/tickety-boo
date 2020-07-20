@@ -22,7 +22,8 @@ $font-display: 'Pacifico', cursive;
   font-size: 2rem;
 }
 
-.ticket {
+.ticket,
+.ticket-public {
   width: 80ch;
   label {
     color: $color-dark-grey;
