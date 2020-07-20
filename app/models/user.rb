@@ -27,6 +27,11 @@ class User < ApplicationRecord
   has_many :comments, foreign_key: :commenter_id
   has_many :commented_tickets, through: :comments
 
+  has_many :requested_users, foreign_key: :requester_id, class_name: 'Meeting'
+  has_many :requestees, through: :requested_users
+  has_many :requesting_users, foreign_key: :requestee_id, class_name: 'Meeting'
+  has_many :requesters, through: :requesting_users
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :omniauthable, omniauth_providers: [:google_oauth2]
 

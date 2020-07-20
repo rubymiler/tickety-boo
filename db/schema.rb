@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_19_230417) do
+ActiveRecord::Schema.define(version: 2020_07_20_021943) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -41,6 +41,19 @@ ActiveRecord::Schema.define(version: 2020_07_19_230417) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["commented_ticket_id"], name: "index_comments_on_commented_ticket_id"
     t.index ["commenter_id"], name: "index_comments_on_commenter_id"
+  end
+
+  create_table "meetings", force: :cascade do |t|
+    t.datetime "start_time"
+    t.datetime "end_time"
+    t.integer "ticket_id", null: false
+    t.integer "requester_id"
+    t.integer "requestee_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["requestee_id"], name: "index_meetings_on_requestee_id"
+    t.index ["requester_id"], name: "index_meetings_on_requester_id"
+    t.index ["ticket_id"], name: "index_meetings_on_ticket_id"
   end
 
   create_table "ticket_topics", force: :cascade do |t|
@@ -91,6 +104,9 @@ ActiveRecord::Schema.define(version: 2020_07_19_230417) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "comments", "tickets", column: "commented_ticket_id"
   add_foreign_key "comments", "users", column: "commenter_id"
+  add_foreign_key "meetings", "tickets"
+  add_foreign_key "meetings", "users", column: "requestee_id"
+  add_foreign_key "meetings", "users", column: "requester_id"
   add_foreign_key "ticket_topics", "tickets"
   add_foreign_key "ticket_topics", "topics"
   add_foreign_key "tickets", "users", column: "submitter_id"

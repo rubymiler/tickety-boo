@@ -18,6 +18,8 @@ class Ticket < ApplicationRecord
   has_many :comments, foreign_key: :commented_ticket_id, dependent: :destroy
   has_many :commenters, through: :comments, source: :commenter
 
+  has_many :meetings
+
   validates :title, :description, :submitter, presence: true
 
   has_one_attached :attachment
