@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   resources :tickets do
     resources :comments, only: %i[create update destroy]
+    resources :meetings, only: %i[new create]
 
     member do
       post :toggle_resolve
@@ -16,6 +17,8 @@ Rails.application.routes.draw do
   end
 
   resources :topics, only: :show
+
+  resources :meetings, only: %i[index show edit update destroy]
 
   devise_for :users, path: '',
                      path_names: {

@@ -63,4 +63,8 @@ class User < ApplicationRecord
   def initials
     first_name[0].upcase + last_name[0].upcase
   end
+
+  def meetings
+    Meeting.where("requester_id = ? OR requestee_id = ?", self.id, self.id)
+  end
 end

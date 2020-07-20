@@ -1,0 +1,46 @@
+//COLOR VARIABLES
+$color-black: #0D0C22;
+$color-dark-grey: #5B5A6A;
+$color-light-grey: #E6E6E6;
+$color-white: #fff;
+
+$color-blue: #A9C5FB;
+$color-yellow: #F5DF49;
+$color-pink: #EF7B97;
+$color-green: #7FD5C1;
+
+//FONT VARIABLES
+$font-primary: 'Source Sans Pro', sans-serif;
+$font-display: 'Pacifico', cursive;
+
+.meeting {
+  margin: 8rem auto;
+
+  .form {
+    padding: 3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.main-card {
+  max-width: 90vw;
+  height: 50rem;
+  display: flex;
+  flex-direction: row;
+  border-radius: 5px;
+  box-shadow: 0 2px 10px rgba(0,0,0,.15);
+  margin-bottom: 2rem;
+}
+
+.meeting-side-panel {
+  background-image: url("new-meeting.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 400px;
+
+  @media only screen and (max-width: 820px) {
+    display: none;
+  }
+}

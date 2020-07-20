@@ -177,6 +177,7 @@ button {
 fieldset {
   position: relative;
   border: none;
+  margin-bottom: 1rem;
 }
 
 label {
@@ -201,7 +202,6 @@ input[type="tel"] {
   border-radius: 5px;
   background-color: $color-light-grey;
   transition: background-color 300ms;
-  margin-bottom: 1rem;
 
   &:focus {
     background-color: $color-white;
@@ -214,4 +214,24 @@ input[type="file"] {
   padding-top: 1.2rem;
   padding-bottom: 1.2rem;
   margin-bottom: 1rem;
+}
+
+.select {
+  font-size: 1.8rem;
+  padding: .5rem 1rem;
+  color: $color-black;
+  background-color: $color-light-grey;
+  border: 1px solid $color-light-grey;
+  cursor: pointer;
+  border-radius: 4px;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  width: 8rem;
+
+  &:focus,
+  &:hover {
+    outline: none;
+    border: 1px solid $color-dark-grey;
+  }
 }

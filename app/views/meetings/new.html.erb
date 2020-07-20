@@ -1,0 +1,12 @@
+<main class="meeting">
+  <div class="main-card">
+    <section class="meeting-side-panel">
+    </section>
+    <section class="form"> 
+      <%= render 'form', meeting: @meeting %>
+    </section>
+  </div>
+  <section class="link">
+    <%= link_to 'Back', meetings_path %>
+  </section>
+</main>
