@@ -37,6 +37,7 @@ $font-display: 'Pacifico', cursive;
 
 .ticket-card-list {
   width: 1366px;
+  max-width: 90vw;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
   grid-gap: 2rem;
@@ -192,6 +193,7 @@ input.topic-field {
 
 .ticket-show__public {
   padding-right: 0;
+  margin-bottom: 2rem;
 }
 
 .ticket-show__topics {
@@ -209,7 +211,7 @@ input.topic-field {
   padding-top: 0;
   border-radius: 4px;
 
-  & > li {
+  & > div {
     padding-bottom: 2rem;
     margin-top: 2rem;
     border-bottom: 1px solid $color-dark-grey;
@@ -217,8 +219,13 @@ input.topic-field {
     grid-template-columns: 30% 70%;
   }
 
-  li:last-child {
+  div:last-child {
     border-bottom: none;
+  }
+
+  h3 {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
   }
 }
 
@@ -231,10 +238,21 @@ input.topic-field {
   }
 }
 
+.comment-links {
+  input[type='submit'] {
+    background: transparent;
+    margin: 0;
+    color: $color-dark-grey;
+  }
+}
+
 .ticket-show__links {
   .back-edit-links {
     margin-right: .5rem;
     margin-bottom: 1rem;
+    & > * {
+      margin-right: .75rem;
+    }
   }
 }
 
@@ -247,10 +265,6 @@ input.topic-field {
   @media only screen and (max-width: 910px) {
     padding-left: 0;
     border: none;
-  }
-
-  & > * {
-    margin-top: 3rem;
   }
 }
 
@@ -280,4 +294,17 @@ input.topic-field {
         color: #d11946;
       }
     }
+}
+
+.ticket-index__resolved {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  & > li {
+    padding-right: 1rem;
+  }
+}
+
+.comment-form {
+  margin-top: 3rem;
 }

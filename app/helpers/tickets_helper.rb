@@ -16,4 +16,14 @@ module TicketsHelper
       end
     end
   end
+
+  def toggle_public_link(ticket)
+    link_to toggle_public_ticket_path(ticket), method: :post do
+      if ticket.public
+        'Private?'
+      else
+        'Public?'
+      end
+    end
+  end
 end

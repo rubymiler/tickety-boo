@@ -8,7 +8,7 @@ class Ability
     if user.manager?
       can :manage, :all
     elsif user.agent?
-      can %i[read toggle_resolve toggle_public faq public_show pending resolved], Ticket
+      can %i[read update toggle_resolve toggle_public faq public_show pending resolved], Ticket
       can :create, Comment
       can :manage, Comment, commenter_id: user.id
     else

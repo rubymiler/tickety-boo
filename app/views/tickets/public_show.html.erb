@@ -14,12 +14,10 @@
       <%= render @ticket.topics %>
     </ul>
 
-    <ul class="ticket-show__comments">
-      <%= render(@ticket.comments) || 'No comments yet.' %>
-    </ul>
-
+    <div class="ticket-show__comments">
+      <h3>Answer</h3>
+      <p><%= @ticket.answer %></p>
+    </div>
   </article>
-
   <%= link_to 'Back', faq_tickets_path %>
-
 </main>

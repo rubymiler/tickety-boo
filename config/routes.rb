@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   resources :tickets do
-    resources :comments, only: %i[create destroy]
+    resources :comments, only: %i[create update destroy]
 
     member do
       post :toggle_resolve

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_16_225201) do
+ActiveRecord::Schema.define(version: 2020_07_19_230417) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -60,6 +60,7 @@ ActiveRecord::Schema.define(version: 2020_07_16_225201) do
     t.datetime "updated_at", precision: 6, null: false
     t.boolean "resolved", default: false
     t.boolean "public", default: false
+    t.text "answer"
     t.index ["submitter_id"], name: "index_tickets_on_submitter_id"
   end
 

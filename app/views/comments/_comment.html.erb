@@ -1,14 +1,22 @@
-<li>
+ <div>
   <div class="comment-intro">
     <div class="name-time-wrapper">
       <p class="name"><%= comment.commenter.name %></p>
       <p><%= detailed_creation_time(comment) %></p>
     </div>
-    <ul class="comment-links">
+
+    <div class="comment-links">
       <%= link_to('Delete', ticket_comment_path(comment.commented_ticket_id, comment.id), method: :delete, data: {confirm: "Are you sure?"}) if can? :destroy, comment %>
-    </ul>
+      <% if (can? :update, comment) && (!current_user.member?) %>
+        <%= form_tag(ticket_comment_path(comment.commented_ticket_id, comment.id), method: :patch) do %>
+          <%= submit_tag 'Set as answer' %>
+        <% end %>
+      <% end %>
+    </div>
+
   </div>
+
   <div class="comment-content">
     <p><%= comment.body %></p>
   </div>
-</li>
+</div> 

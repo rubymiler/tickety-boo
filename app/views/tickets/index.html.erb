@@ -1,8 +1,8 @@
 <main class="ticket-index">
-  <section class="ticket-index__resolved">
-    <ul>
-      <li><%= link_to 'Pending Tickets', pending_tickets_path %></li>
-      <li><%= link_to 'Resolved Tickets', resolved_tickets_path %></li>
+  <section>
+    <ul class="ticket-index__resolved">
+      <li><%= link_to 'Pending Tickets', pending_tickets_path, class: 'btn btn-yellow' %></li>
+      <li><%= link_to 'Resolved Tickets', resolved_tickets_path, class: 'btn btn-green' %></li>
     </ul>
   </section>
   <section class="ticket-card-list">

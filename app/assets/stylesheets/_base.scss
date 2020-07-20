@@ -124,6 +124,30 @@ button {
   }
 }
 
+.btn-yellow {
+  color: $color-dark-grey;
+  border: 2px solid $color-yellow;
+  border-radius: 50px;
+  transition: background-color 300ms;
+  
+  &:hover,
+  &:visited {
+    background-color: $color-yellow;
+  }
+}
+
+.btn-green {
+  color: $color-dark-grey;
+  border: 1.5px solid $color-green;
+  border-radius: 50px;
+  transition: background-color 300ms;
+  
+  &:hover,
+  &:visited {
+    background-color: $color-green;;
+  }
+}
+
 .btn-auth {
   display: flex;
   align-items: center;
