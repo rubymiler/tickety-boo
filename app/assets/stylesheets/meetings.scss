@@ -19,9 +19,50 @@ $font-display: 'Pacifico', cursive;
   .form {
     padding: 3rem;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
   }
+}
+
+.meeting-info {
+  padding: 3rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.timeline-container {
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+  overflow: hidden;
+  position: relative;
+}
+
+.timeline-container::before {
+  content: '';
+  width: .5rem;
+  height: 100%;
+  background-color: $color-yellow;
+  position: absolute;
+  left: 2rem;
+}
+
+.time-box {
+  background: $color-white;
+  padding: 2rem;
+  margin: 3rem 6rem;
+  border: 2px solid $color-yellow;
+  border-radius: 50px;
+}
+
+.time-box::after {
+  content: '';
+  width: 3rem;
+  height: 3rem;
+  background: $color-yellow;
+  border-radius: 50%;
+  position: absolute;
+  left: .7rem;
 }
 
 .main-card {

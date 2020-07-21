@@ -137,6 +137,12 @@ input.topic-field {
   margin-right: 1rem;
 }
 
+.user-info {
+  p {
+    margin-bottom: 0;
+  }
+}
+
 .user-name {
   font-weight: bold;
 }
@@ -173,6 +179,10 @@ input.topic-field {
   i {
     font-size: 2rem;
     margin-left: 1rem;
+  }
+
+  p {
+    margin-bottom: 0;
   }
 }
 

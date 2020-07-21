@@ -1,12 +1,14 @@
 <main class="meeting">
+  <h3>Schedule a New Meeting</h3>
+  <p>Schedule a meeting with <%= @ticket.submitter.name %> to discuss issues raised in the ticket.</p>
   <div class="main-card">
     <section class="meeting-side-panel">
     </section>
     <section class="form"> 
-      <%= render 'form', meeting: @meeting %>
+      <%= render 'form', ticket: @ticket, meeting: @meeting %>
     </section>
   </div>
   <section class="link">
-    <%= link_to 'Back', meetings_path %>
+    <%= link_to 'Back', ticket_path(@ticket) %>
   </section>
 </main>

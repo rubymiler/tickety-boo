@@ -18,7 +18,9 @@ Rails.application.routes.draw do
 
   resources :topics, only: :show
 
-  resources :meetings, only: %i[index show edit update destroy]
+  resources :meetings, only: %i[index show destroy] do
+    post :toggle_accepted, on: :member
+  end
 
   devise_for :users, path: '',
                      path_names: {

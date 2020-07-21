@@ -1,0 +1,18 @@
+<main class="meeting">
+  <div class="main-card">
+    <section class="meeting-side-panel">
+    </section>
+    <section class="meeting-info">
+      <h3>Your Meeting</h3>
+      <div class="timeline-container">
+        <p class="time-box"><%= show_meeting_time(@meeting.start_time) %></p>
+        <p class="time-box"><%= show_meeting_time(@meeting.end_time) %></p>
+      </div>
+        <p>Linked ticket:</p>
+        <%= link_to @meeting.ticket.title, ticket_path(@meeting.ticket) %>
+    </section>
+  </div>
+  <section class="link">
+    <%= link_to 'Back', meetings_path %>
+  </section>
+</main>
