@@ -12,7 +12,10 @@
       <% if user_signed_in? %>
         <li><%= link_to 'Popular Questions', faq_tickets_path %></li>
         <li><%= link_to 'Your Tickets', tickets_path %></li>
-        <li><%= link_to 'New Ticket', new_ticket_path %></li>
+        <% if current_user.member? %>
+          <li><%= link_to 'New Ticket', new_ticket_path %></li>
+        <% end %>
+        <li><%= link_to 'Your Meetings', meetings_path %></li>
       <% else %>
         <li><a href="#">About</a></li>
         <li><a href="#">Features</a></li>

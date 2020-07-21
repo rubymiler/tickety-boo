@@ -1,1 +1,4 @@
-@meetings.each do |meeting|
+<% @meetings.each do |meeting| %>
+  <p><%= show_meeting_time(meeting.start_time) %></p>
+  <p><%= show_meeting_time(meeting.end_time) %></p>
+<% end %>
