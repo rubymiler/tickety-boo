@@ -34,7 +34,6 @@ $font-display: 'Pacifico', cursive;
 .timeline-container {
   margin-top: 3rem;
   margin-bottom: 3rem;
-  overflow: hidden;
   position: relative;
 }
 
@@ -67,7 +66,7 @@ $font-display: 'Pacifico', cursive;
 
 .main-card {
   max-width: 90vw;
-  height: 50rem;
+  min-height: 45rem;
   display: flex;
   flex-direction: row;
   border-radius: 5px;

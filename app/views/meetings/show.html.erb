@@ -8,8 +8,8 @@
         <p class="time-box"><%= show_meeting_time(@meeting.start_time) %></p>
         <p class="time-box"><%= show_meeting_time(@meeting.end_time) %></p>
       </div>
-        <p>Linked ticket:</p>
-        <%= link_to @meeting.ticket.title, ticket_path(@meeting.ticket) %>
+      <p>Linked ticket: <%= link_to @meeting.ticket.title, ticket_path(@meeting.ticket) %></p>
+      <p>With: <%= set_meeting_with(current_user, @meeting) %></p>
     </section>
   </div>
   <section class="link">

@@ -17,7 +17,7 @@ class MeetingsController < ApplicationController
     if @meeting.save
       redirect_to @meeting
     else
-      render :new, alert: 'Could not create meeting.'
+      render :new
     end
   end
 

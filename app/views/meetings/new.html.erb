@@ -4,7 +4,8 @@
   <div class="main-card">
     <section class="meeting-side-panel">
     </section>
-    <section class="form"> 
+    <section class="form">
+      <%= render 'shared/errors', resource: @meeting %>
       <%= render 'form', ticket: @ticket, meeting: @meeting %>
     </section>
   </div>
