@@ -56,15 +56,15 @@ class User < ApplicationRecord
     end
   end
 
+  def meetings
+    Meeting.where("requester_id = ? OR requestee_id = ?", self.id, self.id)
+  end
+
   def name
     "#{first_name} #{last_name}"
   end
 
   def initials
     first_name[0].upcase + last_name[0].upcase
-  end
-
-  def meetings
-    Meeting.where("requester_id = ? OR requestee_id = ?", self.id, self.id)
   end
 end

@@ -5,8 +5,10 @@ class TicketsController < ApplicationController
 
   def index
     @tickets = @tickets.includes(:submitter).order(created_at: :desc).page(params[:page]).per(20)
+    # add an order_by scope
+    # add a page scope method
     
-    @tickets = @tickets.where(submitter_id: current_user.id).page(params[:page]).per(25) if current_user.member?
+    @tickets = @tickets.where(submitter_id: current_user.id).page(params[:page]).per(20) if current_user.member?
   end
 
   def show; end

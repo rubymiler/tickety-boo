@@ -3,7 +3,7 @@ class Meeting < ApplicationRecord
   belongs_to :requestee, class_name: 'User'
   belongs_to :ticket
 
-  validates :start_time, :end_time, :requester, :ticket, presence: true
+  validates :start_time, :end_time, :requester, :requestee, :ticket, presence: true
   validate :start_time_after_now, :end_time_after_start_time
 
   def start_time_after_now
