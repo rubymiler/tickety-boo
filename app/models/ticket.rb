@@ -24,6 +24,8 @@ class Ticket < ApplicationRecord
 
   has_one_attached :attachment
 
+  scope :order_by_submission, -> { order(created_at: :desc) }
+
   def self.search(query)
     if query.present?
       where('title LIKE ?', "%#{query}%")

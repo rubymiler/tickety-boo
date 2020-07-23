@@ -4,9 +4,7 @@ class TicketsController < ApplicationController
   load_and_authorize_resource
 
   def index
-    @tickets = @tickets.includes(:submitter).order(created_at: :desc).page(params[:page]).per(20)
-    # add an order_by scope
-    # add a page scope method
+    @tickets = @tickets.includes(:submitter).order_by_submission.page(params[:page]).per(20)
     
     @tickets = @tickets.where(submitter_id: current_user.id).page(params[:page]).per(20) if current_user.member?
   end
@@ -55,13 +53,13 @@ class TicketsController < ApplicationController
   end
 
   def faq
-    @tickets = Ticket.includes(:topics).public.search(params[:query]).order(created_at: :desc).page(params[:page]).per(10)
+    @tickets = Ticket.includes(:topics).public.search(params[:query]).order_by_submission.page(params[:page]).per(10)
   end
 
   def public_show; end
 
   def pending
-    @tickets = @tickets.unresolved.includes(:submitter).order(created_at: :desc).page(params[:page]).per(20)
+    @tickets = @tickets.unresolved.includes(:submitter).order_by_submission.page(params[:page]).per(20)
 
     @tickets = @tickets.unresolved.where(submitter_id: current_user.id).page(params[:page]).per(25) if current_user.member?
 
@@ -69,7 +67,7 @@ class TicketsController < ApplicationController
   end
 
   def resolved
-    @tickets = @tickets.resolved.includes(:submitter).order(created_at: :desc).page(params[:page]).per(20)
+    @tickets = @tickets.resolved.includes(:submitter).order_by_submission.page(params[:page]).per(20)
 
     @tickets = @tickets.resolved.where(submitter_id: current_user.id).page(params[:page]).per(25) if current_user.member?
 
