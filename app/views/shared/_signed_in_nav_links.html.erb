@@ -1,0 +1,13 @@
+<li><%= link_to 'Popular Questions', faq_tickets_path %></li>
+
+<% if current_user.member? %>
+  <li><%= link_to 'Your Tickets', tickets_path %></li>
+<% else %>
+  <li><%= link_to 'Tickets', tickets_path %></li>
+<% end %>
+
+<% if current_user.member? %>
+  <li><%= link_to 'New Ticket', new_ticket_path %></li>
+<% end %>
+
+<li><%= link_to 'Your Meetings', meetings_path %></li>

@@ -1,0 +1,14 @@
+<li>
+  <% if current_user.provider.present? %>
+    <div class="avatar-circle">
+      <%= user_avatar(current_user) %>
+    </div>
+  <% else %>
+    <%= link_to edit_user_registration_path do %>
+      <div class="avatar-circle">
+        <%= user_avatar(current_user) %>
+      </div>
+    <% end %>
+  <% end %>
+</li>
+<li><%= link_to 'Log Out', destroy_user_session_path, method: 'delete' %></li>
