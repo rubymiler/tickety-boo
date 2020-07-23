@@ -1,4 +1,9 @@
-<% @meetings.each do |meeting| %>
-  <p><%= show_meeting_time(meeting.start_time) %></p>
-  <p><%= show_meeting_time(meeting.end_time) %></p>
+<%= month_calendar events: @meetings do |date, meetings| %>
+  <%= date %>
+
+  <% meetings.each do |meeting| %>
+    <div>
+      <%= link_to "#{show_meeting_time(meeting.start_time)} to #{show_meeting_time(meeting.end_time)}", meeting_path(meeting) %>
+    </div>
+  <% end %>
 <% end %>

@@ -42,8 +42,8 @@
         <p>Scheduled meetings:</p>
         <% @ticket.meetings.each do |meeting| %>
           <div class="timeline-container">
-            <p class="time-box"><%= show_meeting_time(meeting.start_time) %></p>
-            <p class="time-box"><%= show_meeting_time(meeting.end_time) %></p>
+            <p class="time-box"><%= show_meeting_datetime(meeting.start_time) %></p>
+            <p class="time-box"><%= show_meeting_datetime(meeting.end_time) %></p>
           </div>
         <% end %>
       </div>

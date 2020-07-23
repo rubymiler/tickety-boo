@@ -5,8 +5,8 @@
     <section class="meeting-info">
       <h3>Your Meeting</h3>
       <div class="timeline-container">
-        <p class="time-box"><%= show_meeting_time(@meeting.start_time) %></p>
-        <p class="time-box"><%= show_meeting_time(@meeting.end_time) %></p>
+        <p class="time-box"><%= show_meeting_datetime(@meeting.start_time) %></p>
+        <p class="time-box"><%= show_meeting_datetime(@meeting.end_time) %></p>
       </div>
       <p>Linked ticket: <%= link_to @meeting.ticket.title, ticket_path(@meeting.ticket) %></p>
       <p>With: <%= set_meeting_with(current_user, @meeting) %></p>

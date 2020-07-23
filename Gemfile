@@ -3,10 +3,10 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.6.3'
 
-gem 'dotenv-rails', require: 'dotenv/rails-now'
-
-gem 'devise'
+gem 'bootsnap', '>= 1.4.2', require: false
 gem 'cancancan'
+gem 'devise'
+gem 'dotenv-rails', require: 'dotenv/rails-now'
 gem 'image_processing', '~> 1.2'
 gem 'jbuilder', '~> 2.7'
 gem 'kaminari'
@@ -15,10 +15,10 @@ gem 'puma', '~> 4.1'
 gem 'rails', '~> 6.0.3', '>= 6.0.3.2'
 gem 'redis', '~> 4.0'
 gem 'sass-rails', '>= 6'
+gem 'simple_calendar', '~> 2.0'
 gem 'sqlite3', '~> 1.4'
 gem 'turbolinks', '~> 5'
 gem 'webpacker', '~> 4.0'
-gem 'bootsnap', '>= 1.4.2', require: false
 
 group :development, :test do
   gem 'pry-byebug'
