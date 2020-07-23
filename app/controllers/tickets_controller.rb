@@ -21,7 +21,7 @@ class TicketsController < ApplicationController
     if @ticket.save
       redirect_to @ticket, notice: 'Ticket created successfully.'
     else
-      render :new, alert: 'Could not create your ticket.'
+      render :new
     end
   end
 
@@ -31,7 +31,7 @@ class TicketsController < ApplicationController
     if @ticket.update(ticket_params)
       redirect_to @ticket, notice: 'Ticket updated successfully.'
     else
-      render :edit, alert: 'Could not update ticket.'
+      render :edit
     end
   end
 

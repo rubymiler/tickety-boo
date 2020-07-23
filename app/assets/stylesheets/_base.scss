@@ -247,3 +247,14 @@ input[type="file"] {
     border: 1px solid $color-dark-grey;
   }
 }
+
+// NOTIFICATION
+.notice {
+  padding: 2rem 5rem;
+  background-color: $color-green;
+}
+
+.alert {
+  padding: 2rem 5rem;
+  background-color: $color-yellow;
+}
