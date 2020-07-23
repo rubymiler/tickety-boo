@@ -32,7 +32,7 @@ Rails.application.routes.draw do
 
   devise_scope :users do
     authenticated do
-      root 'tickets#index', as: :user_root
+      root 'tickets#faq', as: :user_root
     end
 
     unauthenticated do

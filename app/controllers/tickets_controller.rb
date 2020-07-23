@@ -5,6 +5,7 @@ class TicketsController < ApplicationController
 
   def index
     @tickets = @tickets.includes(:submitter).order(created_at: :desc).page(params[:page]).per(20)
+    
     @tickets = @tickets.where(submitter_id: current_user.id).page(params[:page]).per(25) if current_user.member?
   end
 
@@ -59,6 +60,7 @@ class TicketsController < ApplicationController
 
   def pending
     @tickets = @tickets.unresolved.includes(:submitter).order(created_at: :desc).page(params[:page]).per(20)
+
     @tickets = @tickets.unresolved.where(submitter_id: current_user.id).page(params[:page]).per(25) if current_user.member?
 
     render :index
@@ -66,6 +68,7 @@ class TicketsController < ApplicationController
 
   def resolved
     @tickets = @tickets.resolved.includes(:submitter).order(created_at: :desc).page(params[:page]).per(20)
+
     @tickets = @tickets.resolved.where(submitter_id: current_user.id).page(params[:page]).per(25) if current_user.member?
 
     render :index

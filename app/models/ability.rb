@@ -13,12 +13,14 @@ class Ability
       can :manage, Comment, commenter_id: user.id
       can :create, Meeting
       can :manage, Meeting, requester_id: user.id
+      can %i[create manage], Topic
     else
       can :create, [Ticket, Comment]
       can %i[read faq public_show], Ticket, public: true
       can %i[read update destroy toggle_resolve pending resolved], Ticket, submitter_id: user.id
       can :manage, Comment, commenter_id: user.id
       can %i[read toggle_accepted], Meeting, requestee_id: user.id
+      can %i[create manage], Topic
     end
   end
 end

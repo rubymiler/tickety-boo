@@ -1,4 +1,18 @@
-<h2><%= @topic.name %></h2>
-<% @topic.tickets.each do |t| %>
-  <%= render 'tickets/ticket', ticket: t %>
-<% end %>
+<main class="ticket-public">
+  <h3 class="topic-title"><%= @topic.name %></h3>
+  <section class="ticket-list">
+    <% @faqs.each do |faq| %>
+      <div>
+        <div class="ticket-list__time">
+          <%= date_creation_time(faq) %>
+        </div>
+        <div class="ticket-list__preview">
+          <h4><%= link_to faq.title, public_show_ticket_path(faq) %></h4>
+        </div>
+      </div>
+    <% end %>
+  </section>
+  <section class="pagination">
+    <%= paginate @faqs %>
+  </section>
+</main>
