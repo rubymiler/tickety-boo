@@ -1,16 +1,15 @@
 class MeetingsController < ApplicationController
   before_action :set_meeting, only: %i[show destroy toggle_accepted]
+  before_action :set_ticket, only: %i[new create]
   load_and_authorize_resource
 
   def index; end
 
   def new
     @meeting = Meeting.new
-    @ticket = Ticket.find(params[:ticket_id])
   end
 
   def create
-    @ticket = Ticket.find(params[:ticket_id])
     @meeting = @ticket.meetings.build(meeting_params)
     @meeting.requester = current_user
     @meeting.requestee = @ticket.submitter
@@ -36,6 +35,12 @@ class MeetingsController < ApplicationController
 
   def set_meeting
     @meeting = Meeting.find(params[:id])
+  end
+
+  def set_ticket
+    unless @ticket = Ticket.find_by_id(params[:ticket_id])
+      redirect_to tickets_path, alert: 'Could not find ticket'
+    end
   end
 
   def meeting_params
