@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_21_004725) do
+ActiveRecord::Schema.define(version: 2020_07_24_220441) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -55,6 +55,17 @@ ActiveRecord::Schema.define(version: 2020_07_21_004725) do
     t.index ["requestee_id"], name: "index_meetings_on_requestee_id"
     t.index ["requester_id"], name: "index_meetings_on_requester_id"
     t.index ["ticket_id"], name: "index_meetings_on_ticket_id"
+  end
+
+  create_table "tasks", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "ticket_id", null: false
+    t.string "description"
+    t.boolean "completed", default: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["ticket_id"], name: "index_tasks_on_ticket_id"
+    t.index ["user_id"], name: "index_tasks_on_user_id"
   end
 
   create_table "ticket_topics", force: :cascade do |t|
@@ -108,6 +119,8 @@ ActiveRecord::Schema.define(version: 2020_07_21_004725) do
   add_foreign_key "meetings", "tickets"
   add_foreign_key "meetings", "users", column: "requestee_id"
   add_foreign_key "meetings", "users", column: "requester_id"
+  add_foreign_key "tasks", "tickets"
+  add_foreign_key "tasks", "users"
   add_foreign_key "ticket_topics", "tickets"
   add_foreign_key "ticket_topics", "topics"
   add_foreign_key "tickets", "users", column: "submitter_id"
