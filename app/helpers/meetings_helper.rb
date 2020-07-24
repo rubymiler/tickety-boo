@@ -1,6 +1,18 @@
 module MeetingsHelper
-  def set_meeting_with(user, meeting)
-    user == meeting.requester ? meeting.requestee.name : meeting.requester.name
+  def set_meeting_with(meeting)
+    current_user == meeting.requester ? meeting.requestee.name : meeting.requester.name
+  end
+
+  def show_requestee_meeting_actions(meeting)
+    return unless current_user == meeting.requestee && meeting.requested?
+
+    render 'meetings/shared/requestee_actions', meeting: meeting
+  end
+
+  def show_requester_meeting_actions(meeting)
+    return unless current_user == meeting.requester
+
+    render 'meetings/shared/requester_actions', meeting: meeting
   end
 
   def show_meeting_datetime(datetime)

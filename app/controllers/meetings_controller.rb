@@ -1,5 +1,5 @@
 class MeetingsController < ApplicationController
-  before_action :set_meeting, only: %i[show destroy accept decline]
+  before_action :set_meeting, only: %i[show destroy edit update accept decline]
   before_action :set_ticket, only: %i[new create]
   load_and_authorize_resource
 
@@ -14,7 +14,7 @@ class MeetingsController < ApplicationController
     @meeting.requester = current_user
     @meeting.requestee = @ticket.submitter
     if @meeting.save
-      redirect_to @meeting
+      redirect_to @meeting, notice: 'Meeting requested'
     else
       render :new
     end
@@ -22,9 +22,20 @@ class MeetingsController < ApplicationController
 
   def show; end
 
+  def edit; end
+
+  def update
+    @meeting.status = 0
+    if @meeting.update(meeting_params)
+      redirect_to @meeting, notice: 'Meeting updated successfully'
+    else
+      render :edit
+    end
+  end
+
   def destroy
     @meeting.destroy
-    redirect_to meetings_path
+    redirect_to meetings_path, notice: 'Meeting deleted'
   end
 
   def accept

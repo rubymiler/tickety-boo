@@ -13,7 +13,7 @@
 #  accepted     :boolean          default(FALSE)
 #
 class Meeting < ApplicationRecord
-  enum status: { sent: 0, accepted: 1, declined: 2 }
+  enum status: { requested: 0, accepted: 1, declined: 2 }
 
   belongs_to :requester, class_name: 'User'
   belongs_to :requestee, class_name: 'User'

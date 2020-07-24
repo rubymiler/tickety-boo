@@ -7,7 +7,7 @@ class CommentsController < ApplicationController
     if @comment.update(commented_ticket: @ticket)
       redirect_to ticket_path(@ticket)
     else
-      render 'tickets/show', alert: 'Failed to create comment'
+      render 'tickets/show'
     end
   end
 
@@ -21,7 +21,7 @@ class CommentsController < ApplicationController
 
   def destroy
     @comment.destroy
-    redirect_to @ticket
+    redirect_to @ticket, notice: 'Comment deleted'
   end
 
   private

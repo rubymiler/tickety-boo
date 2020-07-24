@@ -18,7 +18,7 @@ Rails.application.routes.draw do
 
   resources :topics, only: :show
 
-  resources :meetings, only: %i[index show destroy] do
+  resources :meetings, only: %i[index show edit update destroy] do
     member do
       post :accept
       post :decline

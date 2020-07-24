@@ -1,0 +1,15 @@
+<main class="meeting">
+  <h3>Edit Meeting</h3>
+  <p>Edit your meeting with <%= @meeting.requestee.name %> for a better time.</p>
+  <div class="main-card">
+    <section class="meeting-side-panel">
+    </section>
+    <section class="form">
+      <%= render 'shared/errors', resource: @meeting %>
+      <%= render 'form', ticket: nil, meeting: @meeting %>
+    </section>
+  </div>
+  <section class="link">
+    <%= link_to 'Back', meetings_path %>
+  </section>
+</main>
