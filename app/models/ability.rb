@@ -19,7 +19,7 @@ class Ability
       can %i[read faq public_show], Ticket, public: true
       can %i[read update destroy toggle_resolve pending resolved], Ticket, submitter_id: user.id
       can :manage, Comment, commenter_id: user.id
-      can %i[read toggle_accepted], Meeting, requestee_id: user.id
+      can %i[read accept decline], Meeting, requestee_id: user.id
       can %i[create manage], Topic
     end
   end

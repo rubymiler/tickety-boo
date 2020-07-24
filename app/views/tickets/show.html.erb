@@ -37,6 +37,7 @@
     <div><%= toggle_resolve_link(@ticket) %></div>
     <div><%= toggle_public_link(@ticket) unless current_user.member? %></div>
     <div><%= link_to 'Request a meeting', new_ticket_meeting_path(@ticket.id) unless current_user.member? %></div>
+
     <% if @ticket.meetings.present? %>
       <div>
         <p>Scheduled meetings:</p>
@@ -48,6 +49,7 @@
         <% end %>
       </div>
     <% end %>
+    
     <div class="comment-form">
       <%= render partial: 'comments/form', locals: { ticket: @ticket, comment: @ticket.comments.build } %>
     </div>

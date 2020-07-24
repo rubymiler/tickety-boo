@@ -9,21 +9,13 @@ module TicketsHelper
 
   def toggle_resolve_link(ticket)
     link_to toggle_resolve_ticket_path(ticket), method: :post do
-      if ticket.resolved
-        'In Progress?'
-      else
-        'Resolved?'
-      end
+      ticket.resolved ? 'In Progress?' : 'Resolved?'
     end
   end
 
   def toggle_public_link(ticket)
     link_to toggle_public_ticket_path(ticket), method: :post do
-      if ticket.public
-        'Private?'
-      else
-        'Public?'
-      end
+      ticket.public ? 'Private?' : 'Public?'
     end
   end
 end

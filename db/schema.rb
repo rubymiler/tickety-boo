@@ -51,7 +51,7 @@ ActiveRecord::Schema.define(version: 2020_07_21_004725) do
     t.integer "requestee_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.boolean "accepted", default: false
+    t.integer "status", default: 0
     t.index ["requestee_id"], name: "index_meetings_on_requestee_id"
     t.index ["requester_id"], name: "index_meetings_on_requester_id"
     t.index ["ticket_id"], name: "index_meetings_on_ticket_id"

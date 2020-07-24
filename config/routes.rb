@@ -19,7 +19,10 @@ Rails.application.routes.draw do
   resources :topics, only: :show
 
   resources :meetings, only: %i[index show destroy] do
-    post :toggle_accepted, on: :member #view helper for accepted meeting class
+    member do
+      post :accept
+      post :decline
+    end
   end
 
   devise_for :users, path: '',

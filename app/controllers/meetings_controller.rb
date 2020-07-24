@@ -1,5 +1,5 @@
 class MeetingsController < ApplicationController
-  before_action :set_meeting, only: %i[show destroy toggle_accepted]
+  before_action :set_meeting, only: %i[show destroy accept decline]
   before_action :set_ticket, only: %i[new create]
   load_and_authorize_resource
 
@@ -24,11 +24,17 @@ class MeetingsController < ApplicationController
 
   def destroy
     @meeting.destroy
+    redirect_to meetings_path
   end
 
-  def toggle_accepted
-    @meeting.accepted = !@meeting.accepted
-    @meeting.save
+  def accept
+    @meeting.update(status: 1)
+    redirect_to meetings_path
+  end
+
+  def decline
+    @meeting.update(status: 2)
+    redirect_to meetings_path
   end
 
   private

@@ -277,6 +277,16 @@ input.topic-field {
     padding-left: 0;
     border: none;
   }
+
+  a {
+    color: darken($color-pink, 20%);
+    text-decoration: underline;
+    transition: color 300ms;
+  }
+
+  a:hover {
+    color: darken($color-pink, 40%);
+  }
 }
 
 .ticket-list {

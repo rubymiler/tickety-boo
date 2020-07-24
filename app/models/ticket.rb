@@ -8,6 +8,9 @@
 #  submitter_id :integer
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
+#  resolved     :boolean          default(FALSE)
+#  public       :boolean          default(FALSE)
+#  answer       :text
 #
 class Ticket < ApplicationRecord
   belongs_to :submitter, class_name: 'User'

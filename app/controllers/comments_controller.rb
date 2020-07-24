@@ -1,6 +1,6 @@
 class CommentsController < ApplicationController
   before_action :set_comment, only: %i[update destroy]
-  before_action :set_ticket, only: %i[create update]
+  before_action :set_ticket, only: %i[create update destroy]
 
   def create
     @comment = current_user.comments.build(comment_params)
@@ -12,8 +12,11 @@ class CommentsController < ApplicationController
   end
 
   def update
-    @ticket.update(answer: @comment.body)
-    redirect_to public_show_ticket_path(@ticket)
+    if @ticket.update(answer: @comment.body)
+      redirect_to ticket_path(@ticket), notice: 'Successfully set comment as answer'
+    else
+      render 'tickets/show', alert: 'Failed to set answer'
+    end
   end
 
   def destroy

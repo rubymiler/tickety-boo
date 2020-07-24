@@ -8,8 +8,28 @@
         <p class="time-box"><%= show_meeting_datetime(@meeting.start_time) %></p>
         <p class="time-box"><%= show_meeting_datetime(@meeting.end_time) %></p>
       </div>
-      <p>Linked ticket: <%= link_to @meeting.ticket.title, ticket_path(@meeting.ticket) %></p>
+
+      <p>Linked ticket: <%= link_to @meeting.ticket.title, ticket_path(@meeting.ticket), class: 'ticket-link' %></p>
+
       <p>With: <%= set_meeting_with(current_user, @meeting) %></p>
+
+      <% if current_user == @meeting.requestee %>
+        <% if @meeting.sent? %>
+          <div>
+            <%= link_to 'Accept', accept_meeting_path(@meeting), method: :post, class: 'btn btn-blue' %>
+            <%= link_to 'Decline', decline_meeting_path(@meeting), method: :post, class: 'btn btn-pink' %>
+          </div>
+        <% else %>
+          <div>
+            <p>Meeting <span><%= @meeting.status %></span></p>
+          </div>
+        <% end %>
+      <% end %>
+
+      <div class="delete-btn">
+        <%= link_to 'Delete', meeting_path(@meeting), method: :delete, data: {confirm: "Are you sure?"}, class: 'btn btn-pink' if can? :destroy, @meeting %>
+      </div>
+
     </section>
   </div>
   <section class="link">

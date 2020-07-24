@@ -6,12 +6,8 @@
     </div>
 
     <div class="comment-links">
-      <%= link_to('Delete', ticket_comment_path(comment.commented_ticket_id, comment.id), method: :delete, data: {confirm: "Are you sure?"}) if can? :destroy, comment %>
-      <% if (can? :update, comment) && (!current_user.member?) %>
-        <%= form_tag(ticket_comment_path(comment.commented_ticket_id, comment.id), method: :patch) do %>
-          <%= submit_tag 'Set as answer' %>
-        <% end %>
-      <% end %>
+      <%= link_to('Delete', ticket_comment_path(comment.commented_ticket, comment), method: :delete, data: {confirm: "Are you sure?"}) if can? :destroy, comment %>
+      <%= show_answer_link(comment) %>
     </div>
 
   </div>

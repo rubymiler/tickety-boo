@@ -3,7 +3,7 @@
 
   <% meetings.each do |meeting| %>
     <div>
-      <%= link_to "#{show_meeting_time(meeting.start_time)} to #{show_meeting_time(meeting.end_time)}", meeting_path(meeting) %>
+      <%= show_meeting_on_index(meeting) %>
     </div>
   <% end %>
 <% end %>

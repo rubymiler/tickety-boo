@@ -25,10 +25,32 @@ $font-display: 'Pacifico', cursive;
   }
 }
 
+.meeting-accepted {
+  color: darken($color-green, 20%);
+}
+
+.meeting-declined {
+  color: darken($color-pink, 20%);
+}
+
+.meeting-sent {
+  color: darken($color-yellow, 20%);
+}
+
 .meeting-info {
   padding: 3rem;
   display: flex;
   flex-direction: column;
+}
+
+.ticket-link {
+  color: darken($color-pink, 20%);
+  text-decoration: underline;
+  transition: color 300ms;
+
+  &:hover {
+    color: darken($color-pink, 40%);
+  }
 }
 
 .timeline-container {
