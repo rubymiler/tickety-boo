@@ -1,22 +1,3 @@
-# == Schema Information
-#
-# Table name: users
-#
-#  id                     :integer          not null, primary key
-#  email                  :string           default(""), not null
-#  encrypted_password     :string           default(""), not null
-#  reset_password_token   :string
-#  reset_password_sent_at :datetime
-#  remember_created_at    :datetime
-#  created_at             :datetime         not null
-#  updated_at             :datetime         not null
-#  provider               :string
-#  uid                    :string
-#  first_name             :string
-#  last_name              :string
-#  avatar_url             :string
-#  role                   :integer          default("member")
-#
 class User < ApplicationRecord
   enum role: { member: 0, agent: 1, manager: 2 }
 
@@ -27,15 +8,14 @@ class User < ApplicationRecord
   has_many :comments, foreign_key: :commenter_id
   has_many :commented_tickets, through: :comments
 
-  has_many :requested_users, foreign_key: :requester_id, class_name: 'Meeting'
-  has_many :requestees, through: :requested_users
-  has_many :requesting_users, foreign_key: :requestee_id, class_name: 'Meeting'
-  has_many :requesters, through: :requesting_users
-
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :omniauthable, omniauth_providers: [:google_oauth2]
 
   has_one_attached :avatar
+
+  def meetings
+    Meeting.where("requester_id = ? OR requestee_id = ?", id, id)
+  end
 
   def self.from_omniauth(access_token)
     data = access_token.info
@@ -54,10 +34,6 @@ class User < ApplicationRecord
         user.email = data['email'] if user.email.blank?
       end
     end
-  end
-
-  def meetings
-    Meeting.where("requester_id = ? OR requestee_id = ?", self.id, self.id)
   end
 
   def name

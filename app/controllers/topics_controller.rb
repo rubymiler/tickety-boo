@@ -3,6 +3,6 @@ class TopicsController < ApplicationController
 
   def show
     @topic = Topic.find(params[:id])
-    @faqs = @topic.tickets.public.page(params[:page]).per(10)
+    @faqs = @topic.tickets.published.page(params[:page]).per(10)
   end
 end

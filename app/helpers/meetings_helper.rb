@@ -28,4 +28,10 @@ module MeetingsHelper
       content_tag(:p, "#{show_meeting_time(meeting.start_time)} to #{show_meeting_time(meeting.end_time)}", class: "meeting-#{meeting.status}") 
     end
   end
+
+  def show_meeting_on_ticket(meeting)
+    link_to meeting_path(meeting) do
+      content_tag(:p, "#{show_meeting_datetime(meeting.start_time)} to #{show_meeting_datetime(meeting.end_time)} between #{meeting.requester.name} and #{meeting.requestee.name}", class: "meeting-#{meeting.status}")
+    end
+  end
 end

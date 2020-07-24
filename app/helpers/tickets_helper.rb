@@ -8,14 +8,16 @@ module TicketsHelper
   end
 
   def toggle_resolve_link(ticket)
-    link_to toggle_resolve_ticket_path(ticket), method: :post do
+    link_to toggle_resolve_ticket_path(ticket), class: 'lnk lnk-action', method: :post do
       ticket.resolved ? 'In Progress?' : 'Resolved?'
     end
   end
 
-  def toggle_public_link(ticket)
-    link_to toggle_public_ticket_path(ticket), method: :post do
-      ticket.public ? 'Private?' : 'Public?'
+  def set_faq_link(ticket)
+    if ticket.public
+      content_tag(:p, 'This is an FAQ ticket.')
+    else
+      link_to 'Public?', set_faq_ticket_path(ticket), class: 'lnk lnk-action', method: :post
     end
   end
 end

@@ -1,11 +1,12 @@
 Rails.application.routes.draw do
+  resources :tasks
   resources :tickets do
     resources :comments, only: %i[create update destroy]
     resources :meetings, only: %i[new create]
 
     member do
       post :toggle_resolve
-      post :toggle_public
+      post :set_faq
       get :public_show
     end
 

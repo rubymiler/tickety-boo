@@ -27,7 +27,10 @@ class Ticket < ApplicationRecord
 
   has_one_attached :attachment
 
-  scope :order_by_submission, -> { order(created_at: :desc) }
+  scope :resolved, -> { where(resolved: true) }
+  scope :unresolved, -> { where(resolved: false) }
+  scope :published, -> { where(public: true) }
+  scope :unpublished, -> { where(public: false) }
 
   def self.search(query)
     if query.present?
@@ -35,22 +38,6 @@ class Ticket < ApplicationRecord
     else
       all
     end
-  end
-
-  def self.resolved
-    where(resolved: true)
-  end
-
-  def self.unresolved
-    where(resolved: false)
-  end
-
-  def self.public
-    where(public: true)
-  end
-
-  def self.private
-    where(public: false)
   end
 
   def topics_attributes=(attributes)

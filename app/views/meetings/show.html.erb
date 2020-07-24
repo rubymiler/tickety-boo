@@ -9,7 +9,7 @@
         <p class="time-box"><%= show_meeting_datetime(@meeting.end_time) %></p>
       </div>
 
-      <p>Linked ticket: <%= link_to @meeting.ticket.title, ticket_path(@meeting.ticket), class: 'ticket-link' %></p>
+      <p>Linked ticket: <%= link_to @meeting.ticket.title, ticket_path(@meeting.ticket), class: 'lnk lnk-action' %></p>
 
       <p>With: <%= set_meeting_with(@meeting) %></p>
 

@@ -99,6 +99,16 @@ a:hover {
   color: $color-black;
 }
 
+.lnk-action {
+  color: darken($color-pink, 20%);
+  text-decoration: underline;
+  transition: color 300ms;
+
+  &:hover {
+    color: darken($color-pink, 40%);
+  }
+}
+
 // BUTTONS
 
 input[type='submit'],

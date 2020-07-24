@@ -43,16 +43,6 @@ $font-display: 'Pacifico', cursive;
   flex-direction: column;
 }
 
-.ticket-link {
-  color: darken($color-pink, 20%);
-  text-decoration: underline;
-  transition: color 300ms;
-
-  &:hover {
-    color: darken($color-pink, 40%);
-  }
-}
-
 .timeline-container {
   margin-top: 3rem;
   margin-bottom: 3rem;
