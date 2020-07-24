@@ -1,4 +1,4 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: 'no-reply@ticketyboo.com'
+  default from: 'ticketyboo.dev@gmail.com'
   layout 'mailer'
 end

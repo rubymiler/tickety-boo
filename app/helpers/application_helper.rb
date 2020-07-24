@@ -12,4 +12,12 @@ module ApplicationHelper
       render 'shared/notification'
     end
   end
+
+  def display_notice
+    tag.p(notice, class: 'notice') if notice
+  end
+
+  def display_alert
+    tag.p(alert, class: 'alert') if alert
+  end
 end
