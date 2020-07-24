@@ -1,4 +1,7 @@
 <%= form_for (ticket ? [ticket, meeting] : meeting) do |f| %>
+
+  <%= render 'shared/errors', resource: @meeting %>
+  
   <fieldset class="field">
     <%= f.label :start_time %>
     <%= f.datetime_select :start_time, { start_day: Date.today, start_year: Date.today.year, minute_step: 15 }, { class: "select" } %>

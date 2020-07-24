@@ -1,10 +1,6 @@
 <main class="ticket-public">
-  <section class="search">
-    <%= form_tag(faq_tickets_path, method: :get, class: 'search-form') do %>
-      <%= text_field_tag :query, params[:query], placeholder: 'Search ...' %>
-      <%= submit_tag '', style: "display: none;" %>
-    <% end %>
-  </section>
+  <%= render 'search' %>
+
   <section class="ticket-list">
     <% @tickets.each do |ticket| %>
       <div>
@@ -20,7 +16,9 @@
       </div>
     <% end %>
   </section>
+
   <section class="pagination">
     <%= paginate @tickets %>
   </section>
+  
 </main>

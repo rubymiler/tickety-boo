@@ -1,13 +1,7 @@
 <div class="ticket-form">
-  <% if ticket.errors.any? %>
-  <div id="error_explanation">
-    <ul>
-      <% ticket.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-    </ul>
-  </div>
-  <% end %>
+  
+  <%= render 'shared/errors', resource: ticket %>
+
   <%= form_for ticket do |f| %>
     <fieldset class="field">
       <%= f.text_field :title, autofocus: true, placeholder: 'Title...', class: 'ticket-post-title' %>

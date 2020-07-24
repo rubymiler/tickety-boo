@@ -41,15 +41,17 @@ class TicketsController < ApplicationController
   end
 
   def toggle_resolve
-    @ticket.resolved = !@ticket.resolved
-    @ticket.save
+    @ticket.update(resolved: !@ticket.resolved)
     redirect_to @ticket
   end
 
   def toggle_public
-    @ticket.public = !@ticket.public
-    @ticket.save
-    redirect_to public_show_ticket_path(@ticket)
+    if @ticket.answer.present?
+      @ticket.update(public: !@ticket.public)
+      redirect_to public_show_ticket_path(@ticket), notice: 'Successfully set ticket as FAQ'
+    else
+      render :show, alert: 'FAQ tickets must have an answer'
+    end
   end
 
   def faq
@@ -61,7 +63,7 @@ class TicketsController < ApplicationController
   def pending
     @tickets = @tickets.unresolved.includes(:submitter).order_by_submission.page(params[:page]).per(20)
 
-    @tickets = @tickets.unresolved.where(submitter_id: current_user.id).page(params[:page]).per(25) if current_user.member?
+    @tickets = @tickets.unresolved.where(submitter_id: current_user.id).page(params[:page]).per(20) if current_user.member?
 
     render :index
   end
