@@ -1,0 +1,9 @@
+<%= @meeting.requester.name %> Updated a Meeting With You
+
+See below the updated schedule:
+
+Start time: <%= show_meeting_datetime @meeting.start_time %>
+End time: <%= show_meeting_datetime @meeting.end_time %>
+For: <%= @meeting.ticket.title %>
+
+Login to TicketyBoo to accept or decline this updated meeting.

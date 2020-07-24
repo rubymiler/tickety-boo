@@ -1,0 +1,9 @@
+<h1><%= @meeting.requester.name %> Updated a Meeting With You</h1>
+
+<p>See below the updated schedule:</p>
+
+<p>Start time: <%= show_meeting_datetime @meeting.start_time %></p>
+<p>End time: <%= show_meeting_datetime @meeting.end_time %></p>
+<p>For: <%= @meeting.ticket.title %></p>
+
+<p>Login to TicketyBoo to accept or decline this updated meeting.</p>

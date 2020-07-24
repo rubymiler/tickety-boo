@@ -14,6 +14,7 @@ class MeetingsController < ApplicationController
     @meeting.requester = current_user
     @meeting.requestee = @ticket.submitter
     if @meeting.save
+      MeetingMailer.with(meeting: @meeting).meeting_schedule_notification.deliver_later
       redirect_to @meeting, notice: 'Meeting requested'
     else
       render :new
@@ -27,6 +28,7 @@ class MeetingsController < ApplicationController
   def update
     @meeting.status = 0
     if @meeting.update(meeting_params)
+      MeetingMailer.status_update_notification(@meeting).deliver_later
       redirect_to @meeting, notice: 'Meeting updated successfully'
     else
       render :edit
