@@ -6,7 +6,7 @@ class TasksController < ApplicationController
     if params[:ticket_id]
       if @ticket = Ticket.find_by_id(params[:ticket_id])
         @tasks = @ticket.tasks
-      else 
+      else
         redirect_to tickets_path, alert: 'Could not find ticket'
       end
     else
