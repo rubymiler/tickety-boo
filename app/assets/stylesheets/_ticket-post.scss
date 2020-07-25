@@ -40,7 +40,7 @@ $font-display: 'Pacifico', cursive;
   width: 1366px;
   max-width: 90vw;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
   grid-gap: 2rem;
 }
 
@@ -215,11 +215,11 @@ input.topic-field {
   }
 }
 
-.ticket-show__comments {
+.ticket-show__comments,
+.ticket-show__tasks {
   font-size: 1.8rem;
   background-color: $color-light-grey;
   padding: 2rem;
-  padding-top: 0;
   border-radius: 4px;
 
   & > div {

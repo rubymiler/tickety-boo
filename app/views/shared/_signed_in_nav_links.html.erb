@@ -6,8 +6,12 @@
   <li><%= link_to 'Tickets', tickets_path %></li>
 <% end %>
 
-<% if current_user.member? %>
+<% if can? :create, Ticket %>
   <li><%= link_to 'New Ticket', new_ticket_path %></li>
 <% end %>
 
 <li><%= link_to 'Your Meetings', meetings_path %></li>
+
+<% if can? :read, Task %>
+  <li><%= link_to 'Your Tasks', tasks_path %></li>
+<% end %>

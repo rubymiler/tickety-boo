@@ -1,0 +1,12 @@
+<div class="task-card">
+  <div class="avatar-circle">
+    <%= user_avatar(task.assignee) %>
+  </div>
+  <div class="task-content">
+    <p class="text-big"><%= task.description %></p>
+  </div>
+  <%= form_for task do |f| %>
+    <%= f.check_box :completed %>
+    <%= f.submit %>
+  <% end %>
+</div>

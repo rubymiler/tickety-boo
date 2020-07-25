@@ -48,7 +48,7 @@ class TicketsController < ApplicationController
       @ticket.update(public: true)
       redirect_to public_show_ticket_path(@ticket), notice: 'Successfully set ticket as FAQ'
     else
-      render :show, alert: 'FAQ tickets must have an answer'
+      redirect_to ticket_path(@ticket), alert: 'FAQ tickets must have an answer'
     end
   end
 

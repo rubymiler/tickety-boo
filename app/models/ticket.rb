@@ -23,7 +23,9 @@ class Ticket < ApplicationRecord
 
   has_many :meetings, dependent: :destroy
 
-  validates :title, :description, :submitter, presence: true
+  has_many :tasks, dependent: :destroy
+
+  validates :title, :description, presence: true
 
   has_one_attached :attachment
 

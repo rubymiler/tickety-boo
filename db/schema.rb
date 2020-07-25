@@ -58,14 +58,16 @@ ActiveRecord::Schema.define(version: 2020_07_24_220441) do
   end
 
   create_table "tasks", force: :cascade do |t|
-    t.integer "user_id", null: false
+    t.integer "assigner_id"
+    t.integer "assignee_id"
     t.integer "ticket_id", null: false
     t.string "description"
     t.boolean "completed", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["assignee_id"], name: "index_tasks_on_assignee_id"
+    t.index ["assigner_id"], name: "index_tasks_on_assigner_id"
     t.index ["ticket_id"], name: "index_tasks_on_ticket_id"
-    t.index ["user_id"], name: "index_tasks_on_user_id"
   end
 
   create_table "ticket_topics", force: :cascade do |t|
@@ -120,7 +122,8 @@ ActiveRecord::Schema.define(version: 2020_07_24_220441) do
   add_foreign_key "meetings", "users", column: "requestee_id"
   add_foreign_key "meetings", "users", column: "requester_id"
   add_foreign_key "tasks", "tickets"
-  add_foreign_key "tasks", "users"
+  add_foreign_key "tasks", "users", column: "assignee_id"
+  add_foreign_key "tasks", "users", column: "assigner_id"
   add_foreign_key "ticket_topics", "tickets"
   add_foreign_key "ticket_topics", "topics"
   add_foreign_key "tickets", "users", column: "submitter_id"

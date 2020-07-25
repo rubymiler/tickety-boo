@@ -17,6 +17,10 @@ class User < ApplicationRecord
     Meeting.where("requester_id = ? OR requestee_id = ?", id, id)
   end
 
+  def tasks
+    Task.where("assigner_id = ? OR assignee_id = ?", id, id)
+  end
+
   def self.from_omniauth(access_token)
     data = access_token.info
     user = User.where(email: data['email']).first

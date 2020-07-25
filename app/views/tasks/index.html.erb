@@ -1,0 +1,17 @@
+<main class="task">
+  <div class="ticket-list__preview">
+    <h4><%= link_to @ticket.title, ticket_path(@ticket) %></h4>
+  </div>
+
+  <section class="form">
+    <%= render 'form', ticket: @ticket, task: Task.new %>
+  </section>
+
+  <section class="task-list">
+    <%= render @tasks || 'No tasks yet' %>
+  </section>
+
+  <section class="link">
+    <%= link_to 'Back', ticket_path(@ticket) %>
+  </section>
+</main>

@@ -1,3 +1,62 @@
-// Place all the styles related to the Tasks controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: https://sass-lang.com/
+//COLOR VARIABLES
+$color-black: #0D0C22;
+$color-dark-grey: #5B5A6A;
+$color-light-grey: #E6E6E6;
+$color-white: #fff;
+
+$color-blue: #A9C5FB;
+$color-yellow: #F5DF49;
+$color-pink: #EF7B97;
+$color-green: #7FD5C1;
+
+//FONT VARIABLES
+$font-primary: 'Source Sans Pro', sans-serif;
+$font-display: 'Pacifico', cursive;
+
+.task {
+  max-width: 90vw;
+  margin: 6rem auto;
+  font-size: 2rem;
+}
+
+.new_task {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  @media only screen and (max-width: 737px) {
+    flex-direction: column;
+    align-items: flex-start;
+    & > * {
+      margin-bottom: 1rem;
+    }
+  }
+
+  & > * {
+    height: 4rem;
+  }
+
+  margin-bottom: 3rem;
+}
+
+.input-medium {
+  min-width: 60ch;
+  margin-right: 1rem;
+}
+
+#task_assignee_id {
+  width: 20rem;
+  margin-right: 1rem;
+}
+
+.task-card {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.text-big {
+  font-size: 2rem;
+  color: $color-black;
+}
+
