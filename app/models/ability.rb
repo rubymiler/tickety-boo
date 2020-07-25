@@ -9,12 +9,13 @@ class Ability
       can :manage, :all
     elsif user.agent?
       can %i[read toggle_resolve set_faq faq pending resolved public_show], Ticket
-      can :create, %i[Comment Meeting Task]
+      can :create, %i[Comment Meeting]
       can :manage, Comment, commenter_id: user.id
       can :manage, Meeting, requester_id: user.id
       can :manage, Topic
-      can :update, Task, assignee_id: user.id
-      can :manage, Task, assigner_id: user.id
+      can [:create, :read], Task
+      can [:update, :destroy], Task, assigner_id: user.id
+      can [:update, :destroy], Task, assignee_id: user.id
     else
       can :create, [Ticket, Comment]
       can %i[faq public_show], Ticket, public: true

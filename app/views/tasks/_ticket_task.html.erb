@@ -1,0 +1,23 @@
+<section class="task-list">
+  <div class="ticket-list__preview">
+    <h4><%= link_to ticket.title, ticket_path(ticket) %></h4>
+  </div>
+  <% ticket.tasks.each do |task| %>
+    <div class="task-card">
+      <%= form_for task do |f| %>
+        <%= f.label :description, task.description, class: ("completed" if task.completed) %>
+        <div class="task-description__actions">
+          <%= f.check_box :completed, checked: (true if task.completed) %>
+          <%= button_tag type: "submit" do %>
+            <i class="fa fa-refresh" aria-hidden="true"></i>
+          <% end %>
+          <% if task.completed %>
+            <%= link_to task_path(task), method: :delete, data: {confirm: "Are you sure?"} do %>
+              <i class="fa fa-ban" aria-hidden="true"></i>
+            <% end %>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+</section>

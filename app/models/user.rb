@@ -21,6 +21,11 @@ class User < ApplicationRecord
     Task.where("assigner_id = ? OR assignee_id = ?", id, id)
   end
 
+  def tasked_tickets
+    task_id_arr = tasks.distinct.pluck(:ticket_id)
+    Ticket.find(task_id_arr)
+  end
+
   def self.from_omniauth(access_token)
     data = access_token.info
     user = User.where(email: data['email']).first

@@ -8,7 +8,35 @@
   </section>
 
   <section class="task-list">
-    <%= render @tasks || 'No tasks yet' %>
+  <% if @ticket.tasks.present? %>
+    <% @ticket.tasks.each do |task| %>
+      <div class="task-card">
+
+        <div class="avatar-circle">
+          <%= user_avatar(task.assignee) %>
+        </div>
+        
+        <%= form_for [@ticket, task] do |f| %>
+          <%= f.label :description, task.description, class: ("completed" if task.completed) %>
+
+          <% if can? :update, task %>
+          <div class="task-description__actions">
+            <%= f.check_box :completed, checked: (true if task.completed) %>
+            <%= button_tag type: "submit" do %>
+              <i class="fa fa-refresh" aria-hidden="true"></i>
+            <% end %>
+            <% if task.completed %>
+              <%= link_to ticket_task_path(@ticket, task), method: :delete, data: {confirm: "Are you sure?"} do %>
+                <i class="fa fa-ban" aria-hidden="true"></i>
+              <% end %>
+            <% end %>
+          </div>
+          <% end %>
+        <% end %>
+
+      </div>
+    <% end %>
+  <% end %>
   </section>
 
   <section class="link">

@@ -39,24 +39,80 @@ $font-display: 'Pacifico', cursive;
   margin-bottom: 3rem;
 }
 
-.input-medium {
-  min-width: 60ch;
+.edit_task {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+
+  label {
+    font-weight: normal;
+    flex-grow: 2;
+  }
+
+  .completed {
+    text-decoration: line-through;
+  }
+}
+
+.task-description__input {
+  min-width: 45ch;
   margin-right: 1rem;
 }
 
+input.task-description__input {
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid $color-dark-grey;
+  border-radius: 0;
+  padding: 0;
+  font-size: 2rem;
+  color: $color-black;
+}
+
 #task_assignee_id {
-  width: 20rem;
+  all: unset;
+  font-size: 1.8rem;
+  color: $color-dark-grey;
   margin-right: 1rem;
 }
 
 .task-card {
   display: flex;
   flex-direction: row;
-  align-items: center;
+  padding: 1rem 2rem;
+  border-bottom: 1px solid $color-light-grey;
 }
 
-.text-big {
-  font-size: 2rem;
-  color: $color-black;
+.task-description__actions {
+  & > * {
+    margin: unset;
+    padding: unset;
+    background: unset;
+    font-size: 2.5rem;
+    margin-left: .5rem;
+    margin-right: .5rem;
+  }
 }
 
+.fa-refresh {
+  color: darken($color-green, 15%);
+  transition: color 300ms;
+
+  &:hover {
+    color: darken($color-green, 30%)
+  }
+}
+
+.fa-ban {
+  color: darken($color-pink, 15%);
+  transition: color 300ms;
+
+  &:hover {
+    color: darken($color-pink, 30%)
+  }
+}
+
+.task-list {
+  margin-bottom: 4rem;
+}

@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   resources :tickets do
     resources :comments, only: %i[create update destroy]
     resources :meetings, only: %i[new create]
-    resources :tasks, only: %i[index create]
+    resources :tasks, only: %i[index create update destroy]
 
     member do
       post :toggle_resolve
@@ -27,7 +27,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :tasks, only: %i[index show edit update destroy]
+  resources :tasks, only: %i[index destroy]
 
   devise_for :users, path: '',
                      path_names: {

@@ -1,5 +1,5 @@
 <%= form_for [ticket, task] do |f| %>
-  <%= f.text_field :description, class: 'input-medium' %>
-  <%= f.collection_select :assignee_id, User.agent, :id, :name, prompt: true, class: 'select-long' %>
+  <%= f.text_field :description, class: 'task-description__input', autofocus: true, placeholder: 'Enter new task' %>
+  <%= f.collection_select :assignee_id, User.agent, :id, :name, prompt: true %>
   <%= f.submit '+', class: 'btn btn-pink' %>
 <% end %>
