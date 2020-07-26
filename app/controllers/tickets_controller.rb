@@ -4,7 +4,7 @@ class TicketsController < ApplicationController
   load_and_authorize_resource
 
   def index
-    @tickets = @tickets.includes(:submitter).page(params[:page]).per(20)
+    @tickets = @tickets.includes(:submitter).order_by_submission.page(params[:page]).per(20)
   end
 
   def show; end
@@ -61,12 +61,12 @@ class TicketsController < ApplicationController
   # only load current_user's tickets when user is a member
 
   def pending
-    @tickets = @tickets.unresolved.includes(:submitter).page(params[:page]).per(20)
+    @tickets = @tickets.unresolved.includes(:submitter).order_by_submission.page(params[:page]).per(20)
     render :index
   end
 
   def resolved
-    @tickets = @tickets.resolved.includes(:submitter).page(params[:page]).per(20)
+    @tickets = @tickets.resolved.includes(:submitter).order_by_submission.page(params[:page]).per(20)
     render :index
   end
 

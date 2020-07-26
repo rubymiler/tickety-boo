@@ -33,6 +33,7 @@ class Ticket < ApplicationRecord
   scope :unresolved, -> { where(resolved: false) }
   scope :published, -> { where(public: true) }
   scope :unpublished, -> { where(public: false) }
+  scope :order_by_submission, -> { order(created_at: :desc) }
 
   def self.search(query)
     if query.present?

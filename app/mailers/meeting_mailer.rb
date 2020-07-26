@@ -8,14 +8,7 @@ class MeetingMailer < ApplicationMailer
 
   def status_update_notification(meeting)
     @meeting = meeting
-    mail(to: @meeting.requestee.email, subject: "#{@meeting.requester.name} Updated a Meeting With You")
+    mail(to: meeting.requestee.email, subject: "#{meeting.requester.name} Updated a Meeting With You")
   end
 
-  # def meeting_accept_notification(meeting)
-
-  # end
-
-  # def meeting_decline_notification(meeting)
-
-  # end
 end

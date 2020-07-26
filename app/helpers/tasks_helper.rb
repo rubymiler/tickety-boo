@@ -4,4 +4,8 @@ module TasksHelper
       ticket.tasks.present? ? "Check this ticket's tasks" : 'Start new tasks'
     end
   end
+
+  def load_task_collection(ticket)
+    ticket.tasks.where('assigner_id = ? OR assignee_id = ?', current_user.id, current_user.id)
+  end
 end

@@ -1,5 +1,5 @@
 <main class="task">
-  <% if @tasks.present? %>
+  <% if @tickets.present? %>
     <%= render partial: "ticket_task", collection: @tickets, as: :ticket %>
   <% else %>
     <%= render 'task-cta' %>

@@ -14,16 +14,16 @@ class User < ApplicationRecord
   has_one_attached :avatar
 
   def meetings
-    Meeting.where("requester_id = ? OR requestee_id = ?", id, id)
+    Meeting.where('requester_id = ? OR requestee_id = ?', id, id)
   end
 
   def tasks
-    Task.where("assigner_id = ? OR assignee_id = ?", id, id)
+    Task.where('assigner_id = ? OR assignee_id = ?', id, id)
   end
 
   def tasked_tickets
-    task_id_arr = tasks.distinct.pluck(:ticket_id)
-    Ticket.find(task_id_arr)
+    ticket_id_arr = tasks.distinct.pluck(:ticket_id)
+    Ticket.find(ticket_id_arr)
   end
 
   def self.from_omniauth(access_token)
