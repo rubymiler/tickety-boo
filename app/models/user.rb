@@ -25,6 +25,14 @@ class User < ApplicationRecord
     ticket_id_arr = tasks.distinct.pluck(:ticket_id)
     Ticket.find(ticket_id_arr)
   end
+  # write user - task - ticket association  so I can use preload with includes; has many user tickets
+  # https://stackoverflow.com/questions/23122469/how-do-i-pass-an-argument-to-a-has-many-association-scope-in-rails-4
+
+  # ordering tasks by ticket
+
+  # merge: https://apidock.com/rails/ActiveRecord/SpawnMethods/merge
+
+  # credential file for AWS secrets
 
   def self.from_omniauth(access_token)
     data = access_token.info

@@ -46,4 +46,6 @@ Rails.application.routes.draw do
       root 'pages#home'
     end
   end
+
+  get '*path', to: redirect { |route, req| req.flash[:alert] = "The URL \"/#{route[:path]}\" Was Not Found!"; '/' }
 end
