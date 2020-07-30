@@ -62,8 +62,7 @@ Rails.application.configure do
 
   config.action_mailer.perform_caching = false
 
-  config.action_mailer.default_url_options = { :host => 'tickety-boo.herokuapp.com' } 
-  # TODO: In production, :host should be set to the actual host of your application.
+  config.action_mailer.default_url_options = { :host => 'tickety-boo.herokuapp.com' }
 
   config.action_mailer.default_options = {from: 'ticketyboo.dev@gmail.com'}
   config.action_mailer.delivery_method = :smtp
@@ -73,7 +72,7 @@ Rails.application.configure do
     port:                 587,
     domain:               'gmail.com',
     user_name:            'ticketyboo.dev@gmail.com',
-    password:             ENV['GMAIL_PASSWORD'],
+    password:             Rails.application.credentials.dig(:gmail, :password),
     authentication:       'plain',
     enable_starttls_auto: true }
 

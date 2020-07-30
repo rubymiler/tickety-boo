@@ -14,6 +14,8 @@ amazon:
   region: us-east-1
   bucket: tickety-boo-files
 
+  # config vars on heroku
+
 # Remember not to checkin your GCS keyfile to a repository
 # google:
 #   service: GCS
