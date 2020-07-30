@@ -13,6 +13,8 @@ class User < ApplicationRecord
 
   has_one_attached :avatar
 
+  validate :acceptable_avatar
+
   def meetings
     Meeting.where('requester_id = ? OR requestee_id = ?', id, id)
   end
@@ -25,14 +27,10 @@ class User < ApplicationRecord
     ticket_id_arr = tasks.distinct.pluck(:ticket_id)
     Ticket.find(ticket_id_arr)
   end
-  # write user - task - ticket association  so I can use preload with includes; has many user tickets
-  # https://stackoverflow.com/questions/23122469/how-do-i-pass-an-argument-to-a-has-many-association-scope-in-rails-4
 
-  # ordering tasks by ticket
-
-  # merge: https://apidock.com/rails/ActiveRecord/SpawnMethods/merge
-
-  # credential file for AWS secrets
+  def self.with_most_tickets
+    order(:submitted_tickets, count: :desc).first
+  end
 
   def self.from_omniauth(access_token)
     data = access_token.info
@@ -59,5 +57,20 @@ class User < ApplicationRecord
 
   def initials
     first_name[0].upcase + last_name[0].upcase
+  end
+
+  private
+
+  def acceptable_avatar
+    return unless avatar.attached?
+
+    unless avatar.byte_size <= 1.megabyte
+      errors.add(:avatar, 'is too big')
+    end
+
+    acceptable_types = ['image/jpeg', 'image/png']
+    unless acceptable_types.include?(avatar.content_type)
+      errors.add(:avatar, 'must be a JPEG or PNG')
+    end
   end
 end

@@ -8,7 +8,7 @@
   </section>
 
   <section class="ticket-card-list">
-    <%= render(@tickets) || render(partial: 'ticket_cta') %>
+    <%= render(@tickets) || (render(partial: 'ticket_cta') if can? :create, Ticket) %>
   </section>
   
   <section class="pagination">

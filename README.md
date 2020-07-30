@@ -2,9 +2,13 @@
 
 This is a class project built with Ruby on Rails for Flatiron School's software engineering program. It is a content management system for support tickets, including tagging, commenting, and frequently asked questions features. It provides user authorization for regular and admin users. Admin users can schedule meetings and establish as well as manage tasks in relation to support tickets. The project also supports ActionMailer for notifications on receiving of question responses, meeting invites, and task assignments. The front-end of the project, built with Sass, is fully responsive.
 
+
 To test the app's admin functions, use the below demo account:
+
 email: bennett@heaney.name
+
 password: remember
+
 
 [Watch this video demo on how to use the app](https://youtu.be/5bk0_t-nwgg)
 

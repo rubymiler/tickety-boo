@@ -20,7 +20,7 @@
 
     <section class="ticket-show__comments">
       <h4>Comments</h4>
-      <%= render(@ticket.comments) || 'No comments yet.' %>
+      <%= render(@ticket.comments.includes([:commenter, :commented_ticket])) || 'No comments yet.' %>
     </section>
 
     <ul class="ticket-show__links">

@@ -10,5 +10,4 @@ class MeetingMailer < ApplicationMailer
     @meeting = meeting
     mail(to: meeting.requestee.email, subject: "#{meeting.requester.name} Updated a Meeting With You")
   end
-
 end

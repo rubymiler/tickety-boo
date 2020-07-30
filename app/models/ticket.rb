@@ -1,17 +1,3 @@
-# == Schema Information
-#
-# Table name: tickets
-#
-#  id           :integer          not null, primary key
-#  title        :string
-#  description  :text
-#  submitter_id :integer
-#  created_at   :datetime         not null
-#  updated_at   :datetime         not null
-#  resolved     :boolean          default(FALSE)
-#  public       :boolean          default(FALSE)
-#  answer       :text
-#
 class Ticket < ApplicationRecord
   belongs_to :submitter, class_name: 'User'
 
@@ -28,6 +14,8 @@ class Ticket < ApplicationRecord
   validates :title, :description, presence: true
 
   has_one_attached :attachment
+
+  validate :acceptable_attachment
 
   scope :resolved, -> { where(resolved: true) }
   scope :unresolved, -> { where(resolved: false) }
@@ -59,6 +47,19 @@ class Ticket < ApplicationRecord
       topics.destroy(topic)
     else
       ticket_topics.build(topic: topic) unless topics.include?(topic)
+    end
+  end
+
+  def acceptable_attachment
+    return unless attachment.attached?
+
+    unless attachment.byte_size <= 1.megabyte
+      errors.add(:attachment, 'is too big')
+    end
+
+    acceptable_types = ['image/jpeg', 'image/png']
+    unless acceptable_types.include?(attachment.content_type)
+      errors.add(:attachment, 'must be a JPEG or PNG')
     end
   end
 end

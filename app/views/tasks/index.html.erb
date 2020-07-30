@@ -9,7 +9,7 @@
 
   <section class="task-list">
   <% if @ticket.tasks.present? %>
-    <% @ticket.tasks.each do |task| %>
+    <% @ticket.tasks.includes(assignee: :avatar_attachment).each do |task| %>
       <div class="task-card">
 
         <div class="avatar-circle">
