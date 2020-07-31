@@ -49,5 +49,5 @@ Rails.application.routes.draw do
 
   get 'users/user_with_most_tickets', to: 'users#with_most_tickets'
 
-  get '*path', to: redirect { |route, req| req.flash[:alert] = "The URL \"/#{route[:path]}\" Was Not Found!"; '/' }
+  # get '*path', to: redirect { |route, req| req.flash[:alert] = "The URL \"/#{route[:path]}\" Was Not Found!"; '/' }
 end
