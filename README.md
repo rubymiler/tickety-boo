@@ -4,17 +4,20 @@ This is a class project built with Ruby on Rails for Flatiron School's software 
 
 ## Demonstration
 
-[Watch this video demo on how to use the app](https://youtu.be/5bk0_t-nwgg)
-
-[Read my blog post about ActiveRecord Aliasing Association](https://medium.com/@lushiyun/using-aliasing-associations-for-intuitive-development-reflections-from-a-rails-project-faea6c66f9af)
-
-[Demo the project in production] ()
+[Demo the project in production](https://tickety-boo.herokuapp.com/)
 
 To test the app's admin functions, use the below demo account:
 
-email: bennett@heaney.name
+* email: marc@okeefe-rippin.org
 
-password: remember
+* password: remember
+
+
+[Watch this video demo on how to use the app](https://youtu.be/5bk0_t-nwgg)
+
+
+[Read my blog post about ActiveRecord Aliasing Association](https://medium.com/@lushiyun/using-aliasing-associations-for-intuitive-development-reflections-from-a-rails-project-faea6c66f9af)
+
 
 ## Getting Started
 
