@@ -3,7 +3,7 @@ module PagesHelper
     if user_signed_in?
       render 'shared/signed_in_nav_links'
     else
-      render 'shared/logged_out_nav_links'
+      render 'shared/logged_out_nav_links' unless current_page?('/signin') || current_page?('/signup')
     end
   end
 
