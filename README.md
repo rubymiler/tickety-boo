@@ -1,23 +1,27 @@
 # Rails Support Ticket System with Meeting Schedule and Task Management
 
-This is a class project built with Ruby on Rails for Flatiron School's software engineering program. It is a content management system for support tickets, including tagging, commenting, and frequently asked questions features. It provides user authorization for regular and admin users. Admin users can schedule meetings and establish as well as manage tasks in relation to support tickets. The project also supports ActionMailer for notifications on receiving of question responses, meeting invites, and task assignments. The front-end of the project, built with Sass, is fully responsive.
+* Content management system for support tickets: including search, tagging, commenting, and FAQ features. 
+* User authentication with Devise and Omniauth Google Oauth2.
+* Authorization between regular and admin users using CanCanCan.
+* User avatar and file upload through Active Storage and AWS S3.
+* Admin users can schedule meetings and manage tasks for each support ticket.
+* Email notifications on meeting schedule and updates through Action Mailer.
+* Global success, warning, and error message rendering.
+* Fully responsive front-end written in Sass.
 
 ## Demonstration
 
 [Demo the project in production](https://tickety-boo.herokuapp.com/)
 
 To test the app's admin functions, use the below demo account:
-
-* email: marc@okeefe-rippin.org
-
+* email: zonia@stokes.biz
 * password: remember
 
+[Watch this video demo on how to use the app](https://youtu.be/boiLHpAFJIk)
 
-[Watch this video demo on how to use the app](https://youtu.be/5bk0_t-nwgg)
+[Read my blog post about Active Record Aliasing Association](https://medium.com/@lushiyun/using-aliasing-associations-for-intuitive-development-reflections-from-a-rails-project-faea6c66f9af)
 
-
-[Read my blog post about ActiveRecord Aliasing Association](https://medium.com/@lushiyun/using-aliasing-associations-for-intuitive-development-reflections-from-a-rails-project-faea6c66f9af)
-
+[Check out my portfolio for my other projects](https://www.shiyunlu.com/)
 
 ## Getting Started
 
